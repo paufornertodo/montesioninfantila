@@ -9,16 +9,16 @@ const EQUIPO = {
   categoria: "Infantil",
   deporte: "Fútbol sala",
   temporada: "26/27",
-  escudo: "escudos/montesion.png"
+  escudo: "montesion.png"
 };
 
 /* Rivales: el nombre corto es el que se usa en los partidos */
 const EQUIPOS = {
-  "Montesión":     { nombre: "Colegio Montesión 'A'",          escudo: "escudos/montesion.png" },
-  "Inter Campos":  { nombre: "Inter Campos Futbol Sala",       escudo: "escudos/inter-campos.png" },
-  "Son Oliva":     { nombre: "C.D. Son Oliva F.S. 'A'",        escudo: "escudos/son-oliva.png" },
-  "Viva Sports":   { nombre: "Viva Sports Masunga del V.S.",   escudo: "escudos/viva-sports.png" },
-  "Juan de Ávila": { nombre: "C.S.E. Juan de Ávila",           escudo: "escudos/juan-de-avila.png" }
+  "Montesión":     { nombre: "Colegio Montesión 'A'",          escudo: "montesion.png" },
+  "Inter Campos":  { nombre: "Inter Campos Futbol Sala",       escudo: "inter-campos.png" },
+  "Son Oliva":     { nombre: "C.D. Son Oliva F.S. 'A'",        escudo: "son-oliva.png" },
+  "Viva Sports":   { nombre: "Viva Sports Masunga del V.S.",   escudo: "viva-sports.png" },
+  "Juan de Ávila": { nombre: "C.S.E. Juan de Ávila",           escudo: "juan-de-avila.png" }
 };
 
 /* Nombres que son la misma persona (se escriben como salga y la web los suma bien) */
@@ -79,11 +79,11 @@ const COMPETICIONES = [
 
 /* Galería */
 const FOTOS = [
-  { src: "fotos/foto-equipo.jpg",       pie: "Foto oficial del equipo y los entrenadores" },
-  { src: "fotos/selfie-vestuario.jpg",  pie: "Selfie en el vestuario" },
-  { src: "fotos/pina-pista.jpg",        pie: "Piña con los entrenadores en la pista" },
-  { src: "fotos/colchoneta.jpg",        pie: "Descanso en la colchoneta" },
-  { src: "fotos/charla-pizarra.jpg",    pie: "Charla con la pizarra antes de salir" },
-  { src: "fotos/banquillo.jpg",         pie: "Últimas indicaciones en la banda" },
-  { src: "fotos/vestuario-portero.jpg", pie: "En el vestuario, porteros de amarillo" }
+  { src: "foto-equipo.jpg",       pie: "Foto oficial del equipo y los entrenadores" },
+  { src: "selfie-vestuario.jpg",  pie: "Selfie en el vestuario" },
+  { src: "pina-pista.jpg",        pie: "Piña con los entrenadores en la pista" },
+  { src: "colchoneta.jpg",        pie: "Descanso en la colchoneta" },
+  { src: "charla-pizarra.jpg",    pie: "Charla con la pizarra antes de salir" },
+  { src: "banquillo.jpg",         pie: "Últimas indicaciones en la banda" },
+  { src: "vestuario-portero.jpg", pie: "En el vestuario, porteros de amarillo" }
 ];
