@@ -55,6 +55,7 @@ h1 small{display:block;font-size:.42em;font-weight:700;color:var(--oro);letter-s
 .centro .res{font-size:3.4rem;font-weight:800;line-height:1}
 .centro .hora{font-size:2.4rem;font-weight:700;line-height:1}
 .centro .fecha{font-family:var(--texto);font-size:.9rem;color:var(--gris)}
+.pista{margin:-8px 0 0;padding:0 14px 16px;text-align:center;font-size:.9rem;color:var(--gris)}
 .cuenta{font-family:var(--texto);font-size:.85rem;font-weight:600;color:var(--azul);margin-top:4px}
 
 /* ---------- Navegación ---------- */
@@ -252,11 +253,11 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
     const n = Math.round((dia - hoy) / 864e5);
     const cuenta = n === 0 ? "Hoy" : n === 1 ? "Mañana" : n > 1 ? `Faltan ${n} días` : "";
     top = `<span>${esc(p.compNombre)}</span><span>Jornada ${p.j}</span>`;
-    centro = `<div class="hora">${esc(p.hora)}</div><div class="fecha">${fechaLarga(p.fecha)}</div>${cuenta ? `<div class="cuenta">${cuenta}</div>` : ""}`;
+    centro = `${p.hora ? `<div class="hora">${esc(p.hora)}</div>` : `<div class="hora" style="font-size:1.4rem">Hora por fijar</div>`}<div class="fecha">${fechaLarga(p.fecha)}</div>${cuenta ? `<div class="cuenta">${cuenta}</div>` : ""}`;
   }
   const lado = k => `<div class="eq ${k===EQUIPO.id?'nos':''}"><img src="${eqEscudo(k)}" alt="">${esc(eqNombre(k))}</div>`;
   $("#proximo").innerHTML = `<div class="marcador"><div class="marcador-top">${top}</div>${vivo?"":`<p class="prox-t">Próximo partido</p>`}
-    <div class="duelo">${lado(p.local)}<div class="centro">${centro}</div>${lado(p.visitante)}</div></div>`;
+    <div class="duelo">${lado(p.local)}<div class="centro">${centro}</div>${lado(p.visitante)}</div>${p.pista?`<p class="pista">📍 ${esc(p.pista)}</p>`:""}</div>`;
 })();
 
 /* ---------- Resumen de la temporada ---------- */
@@ -302,7 +303,7 @@ function cruce(p){
     if (p.porteros && p.porteros.length) partes.push("Portería: " + p.porteros.map(x=>`<b>${esc(nom(x.n))}</b> ${x.ge} enc.`).join(", "));
     if (partes.length) det = `<div class="detalle">${partes.join(" · ")}</div>`;
   } else if (!jugado(p) && p.fecha) {
-    det = `<div class="detalle">${fechaLarga(p.fecha)}</div>`;
+    det = `<div class="detalle">${fechaLarga(p.fecha)}${p.hora?"":" · hora por fijar"}${p.pista?` · ${esc(p.pista)}`:""}</div>`;
   }
   return `<div class="${cls}"><div class="l">${esc(p.local)}</div>${r}<div>${esc(p.visitante)}</div>${det}</div>`;
 }
