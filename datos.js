@@ -18,7 +18,7 @@ const EQUIPOS = {
   "Inter Campos":  { nombre: "Inter Campos Futbol Sala",       escudo: "inter-campos.png" },
   "Son Oliva":     { nombre: "C.D. Son Oliva F.S. 'A'",        escudo: "son-oliva.png" },
   "Viva Sports":   { nombre: "Viva Sports Masunga del V.S.",   escudo: "viva-sports.png" },
-  "Juan de Ávila": { nombre: "C.S.E. Juan de Ávila",           escudo: "juan-de-avila.png" }
+  "Juan de Ávila": { nombre: "C.S.E. Juan de Ávila \"C\"",           escudo: "juan-de-avila.png" }
 };
 
 /* Nombres que son la misma persona (se escriben como salga y la web los suma bien) */
@@ -42,21 +42,35 @@ const COMPETICIONES = [
   {
     id: "clasificacion",
     nombre: "Fase de clasificación",
-    info: "Grupo de cinco equipos a una vuelta. En cada jornada descansa uno.",
+    info: "Grupo D · cinco equipos a una vuelta, del 26 de septiembre al 24 de octubre. En cada jornada descansa uno.",
     tabla: true,
     ffib: "https://www.ffib.es/Fed/NPcd/NFG_CmpJornada?cod_primaria=1000110&CodCompeticion=23348657&CodGrupo=23348661&CodTemporada=22&cod_agrupacion=&CodJornada=1&Sch_Codigo_Delegacion=1&Sch_Tipo_Juego=",   // enlace a la página oficial de la federación
     equipos: ["Montesión", "Inter Campos", "Son Oliva", "Viva Sports", "Juan de Ávila"],
     jornadas: [
-      {
-        j: 1,
-        descansa: "Juan de Ávila",
-        partidos: [
-          { local: "Viva Sports",  visitante: "Son Oliva", fecha: "2026-09-26", hora: "16:00", gl: null, gv: null },
-          { local: "Inter Campos", visitante: "Montesión", fecha: "2026-09-27", hora: "13:00", gl: null, gv: null,
-            descanso: "", estado: "", goleadores: [], porteros: [] }
-        ]
-      }
-      // Jornadas 2 y 3: se añaden cuando llegue el calendario
+      { j: 1, descansa: "Juan de Ávila", partidos: [
+        { local: "Viva Sports",  visitante: "Son Oliva", fecha: "2026-09-26", hora: "16:00", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null },
+        { local: "Inter Campos", visitante: "Montesión", fecha: "2026-09-27", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null,
+          descanso: "", estado: "", goleadores: [], porteros: [] }
+      ]},
+      { j: 2, descansa: "Inter Campos", partidos: [
+        { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
+        { local: "Montesión",    visitante: "Viva Sports", fecha: "2026-10-04", hora: "16:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goleadores: [], porteros: [] }
+      ]},
+      { j: 3, descansa: "Son Oliva", partidos: [
+        { local: "Juan de Ávila", visitante: "Montesión", fecha: "2026-10-10", hora: "", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goleadores: [], porteros: [] },
+        { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-10", hora: "", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null }
+      ]},
+      { j: 4, descansa: "Montesión", partidos: [
+        { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-17", hora: "", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null },
+        { local: "Viva Sports",  visitante: "Juan de Ávila", fecha: "2026-10-17", hora: "", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null }
+      ]},
+      { j: 5, descansa: "Viva Sports", partidos: [
+        { local: "Son Oliva",    visitante: "Montesión", fecha: "2026-10-24", hora: "", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goleadores: [], porteros: [] },
+        { local: "Juan de Ávila", visitante: "Inter Campos", fecha: "2026-10-24", hora: "", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null }
+      ]}
     ]
   },
   {
