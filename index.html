@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Montesión A · Infantil · Temporada 26/27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noche:#0B2748;      /* franjas oscuras de la camiseta */
+  --azul:#2A88DC;       /* azul de la camiseta */
+  --azul-claro:#DCEBFA;
+  --oro:#F2C230;        /* amarillo de los porteros / escudo */
+  --rojo:#D8262F;       /* segunda equipación */
+  --blanco:#FFFFFF;
+  --tinta:#0B2748;
+  --gris:#5B6B80;
+  --display:"Saira Condensed","Arial Narrow",sans-serif;
+  --texto:"Barlow",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;font-family:var(--texto);color:var(--tinta);background:var(--azul-claro);line-height:1.5}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+img{max-width:100%;display:block}
+
+/* ---------- Cabecera ---------- */
+.cab{background:var(--noche);color:var(--blanco);position:relative;overflow:hidden}
+.cab::before{ /* franjas diagonales de la camiseta */
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(-58deg,transparent 0 46px,rgba(42,136,220,.22) 46px 58px,transparent 58px 120px);
+  pointer-events:none}
+.cab-in{position:relative;max-width:980px;margin:0 auto;padding:28px 20px 34px}
+.marca{display:flex;align-items:center;gap:14px}
+.marca img{width:58px;height:auto;background:#fff;border-radius:10px;padding:4px}
+.marca p{margin:0;font-size:.95rem;color:#BFD6EE}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(3rem,11vw,6.2rem);line-height:.86;margin:26px 0 6px;letter-spacing:-.01em}
+h1 small{display:block;font-size:.42em;font-weight:700;color:var(--oro);letter-spacing:0;margin-top:10px}
+
+/* Marcador del próximo partido */
+.marcador{margin-top:26px;background:var(--blanco);color:var(--tinta);border-radius:14px;overflow:hidden;box-shadow:0 10px 0 var(--azul)}
+.marcador-top{display:flex;justify-content:space-between;gap:10px;padding:10px 16px;background:var(--oro);font-weight:600;font-size:.92rem}
+.prox-t{margin:14px 0 0;text-align:center;font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--gris)}
+.marcador-top .vivo{background:var(--rojo);color:#fff;padding:1px 8px;border-radius:4px;animation:lat 1.4s infinite}
+@keyframes lat{50%{opacity:.45}}
+.duelo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;padding:12px 12px 22px}
+.eq{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;font-weight:600;font-size:.95rem;line-height:1.2}
+.eq img{height:70px;width:auto}
+.eq.nos{color:var(--azul)}
+.centro{text-align:center;font-family:var(--display)}
+.centro .res{font-size:3.4rem;font-weight:800;line-height:1}
+.centro .hora{font-size:2.4rem;font-weight:700;line-height:1}
+.centro .fecha{font-family:var(--texto);font-size:.9rem;color:var(--gris)}
+.cuenta{font-family:var(--texto);font-size:.85rem;font-weight:600;color:var(--azul);margin-top:4px}
+
+/* ---------- Navegación ---------- */
+nav{position:sticky;top:0;z-index:5;background:var(--azul);box-shadow:0 2px 0 rgba(11,39,72,.25)}
+nav ul{list-style:none;margin:0 auto;padding:0 12px;max-width:980px;display:flex;overflow-x:auto}
+nav a{display:block;padding:13px 12px;color:#fff;text-decoration:none;font-weight:600;white-space:nowrap}
+nav a:hover{background:rgba(11,39,72,.25)}
+
+main{max-width:980px;margin:0 auto;padding:10px 20px 60px}
+section{padding-top:36px}
+h2{font-family:var(--display);font-weight:800;font-size:2.3rem;line-height:1;margin:0 0 6px}
+h3{font-family:var(--display);font-weight:700;font-size:1.5rem;margin:0}
+.nota{color:var(--gris);margin:0 0 16px;max-width:62ch}
+
+/* Resumen */
+.resumen{display:grid;grid-template-columns:repeat(6,1fr);background:var(--noche);color:#fff;border-radius:12px;overflow:hidden;margin-top:20px}
+.resumen div{padding:12px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.12)}
+.resumen div:last-child{border-right:0}
+.resumen b{display:block;font-family:var(--display);font-size:2rem;line-height:1}
+.resumen span{font-size:.8rem;color:#BFD6EE}
+
+/* Competiciones */
+.comp{background:#fff;border-radius:14px;margin-top:18px;border-left:8px solid var(--azul)}
+.comp.vacia{border-left-color:#B7C8DC}
+.comp>summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.comp>summary::-webkit-details-marker{display:none}
+.comp>summary .flecha{font-size:1.3rem;transition:transform .2s}
+.comp[open]>summary .flecha{transform:rotate(180deg)}
+.comp .estado{font-size:.85rem;color:var(--gris);font-weight:500}
+.comp-cuerpo{padding:0 20px 22px}
+
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th{font-weight:600;color:var(--gris);font-size:.8rem;text-align:center;padding:6px 4px;border-bottom:2px solid var(--azul-claro)}
+td{padding:9px 4px;text-align:center;border-bottom:1px solid var(--azul-claro)}
+td.eqc,th.eqc{text-align:left}
+td.eqc .e{display:flex;align-items:center;gap:8px}
+td.eqc img{height:24px;width:28px;object-fit:contain}
+tr.nos td{background:#FFF7D6;font-weight:600}
+td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
+.tabla-wrap{overflow-x:auto;margin-bottom:22px}
+
+.jornada{margin-top:18px}
+.jornada h4{margin:0 0 8px;font-size:1rem}
+.jornada h4 span{display:block;font-weight:400;color:var(--gris);font-size:.88rem}
+.cruce{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--azul-claro);font-size:.95rem}
+.cruce .l{text-align:right}
+.cruce .r{font-family:var(--display);font-weight:800;font-size:1.25rem;text-align:center;background:var(--azul-claro);border-radius:6px;padding:2px 0}
+.cruce .r.hora{font-weight:600;font-size:.95rem;font-family:var(--texto)}
+.cruce.nos{font-weight:600}
+.cruce.nos .r{background:var(--noche);color:#fff}
+.cruce.nos.g .r{background:var(--azul)}
+.cruce.nos.p .r{background:var(--rojo)}
+.cruce.nos.e .r{background:var(--gris)}
+.detalle{grid-column:1/-1;font-size:.88rem;color:var(--gris);font-weight:400;text-align:center;padding-bottom:4px}
+.detalle b{color:var(--tinta);font-weight:600}
+
+.ffib{margin-top:24px;border-top:2px solid var(--azul-claro);padding-top:16px}
+.ffib a.btn{display:inline-block;background:var(--noche);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:6px 14px;font-size:.9rem}
+
+/* Estadísticas */
+.filtro{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.filtro button{font:inherit;font-weight:600;border:2px solid var(--noche);background:transparent;color:var(--noche);border-radius:999px;padding:5px 14px;cursor:pointer}
+.filtro button[aria-pressed="true"]{background:var(--noche);color:#fff}
+.lista{background:#fff;border-radius:14px;padding:6px 20px}
+.fila{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--azul-claro)}
+.fila:last-child{border-bottom:0}
+.fila .pos{font-family:var(--display);font-weight:700;color:var(--gris);font-size:1.2rem}
+.fila .n{font-weight:600}
+.fila .barra{height:6px;background:var(--azul);border-radius:3px;margin-top:5px}
+.fila .num{font-family:var(--display);font-weight:800;font-size:1.8rem;line-height:1}
+.fila .sub{font-size:.8rem;color:var(--gris);display:block;text-align:right}
+.porteros .barra{background:var(--oro)}
+.vacio{padding:18px 0;color:var(--gris)}
+
+/* Galería */
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.galeria button{all:unset;cursor:zoom-in;display:block;border-radius:12px;overflow:hidden;background:#fff}
+.galeria button:focus-visible{outline:3px solid var(--oro)}
+.galeria img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.galeria span{display:block;padding:8px 12px;font-size:.88rem;color:var(--gris)}
+dialog{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh}
+dialog::backdrop{background:rgba(11,39,72,.92)}
+dialog img{max-height:84vh;width:auto;border-radius:8px}
+dialog p{color:#fff;text-align:center;margin:10px 0 0}
+dialog button{position:fixed;top:14px;right:18px;font:inherit;font-size:1rem;font-weight:600;background:var(--oro);border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
+
+footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px;font-size:.88rem}
+
+@media (max-width:600px){
+  .eq img{height:54px}
+  .centro .res{font-size:2.7rem}
+  .resumen{grid-template-columns:repeat(3,1fr)}
+  .resumen div:nth-child(3){border-right:0}
+  .resumen div:nth-child(-n+3){border-bottom:1px solid rgba(255,255,255,.12)}
+  .cruce{grid-template-columns:1fr 58px 1fr;font-size:.88rem}
+}
+</style>
+</head>
+<body>
+
+<header class="cab">
+  <div class="cab-in">
+    <div class="marca">
+      <img id="escudo" alt="Escudo del Colegio Montesión">
+      <p id="subtitulo"></p>
+    </div>
+    <h1>Montesión A<small id="cat"></small></h1>
+    <div id="proximo"></div>
+  </div>
+</header>
+
+<nav aria-label="Secciones">
+  <ul>
+    <li><a href="#partidos">Partidos</a></li>
+    <li><a href="#goleadores">Goleadores</a></li>
+    <li><a href="#porteros">Porteros</a></li>
+    <li><a href="#galeria">Galería</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="partidos">
+    <h2>Partidos</h2>
+    <div id="resumen"></div>
+    <div id="competiciones"></div>
+  </section>
+
+  <section id="goleadores">
+    <h2>Goleadores</h2>
+    <div class="filtro" data-para="goleadores"></div>
+    <div class="lista" id="lista-goleadores"></div>
+  </section>
+
+  <section id="porteros">
+    <h2>Porteros</h2>
+    <p class="nota">Goles encajados mientras estaban en la portería.</p>
+    <div class="filtro" data-para="porteros"></div>
+    <div class="lista porteros" id="lista-porteros"></div>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="galeria" id="fotos"></div>
+  </section>
+</main>
+
+<dialog id="visor"><button type="button" id="cerrar">Cerrar</button><img alt=""><p></p></dialog>
+
+<footer id="pie"></footer>
+
+<script src="datos.js"></script>
+<script>
+/* ===================== A partir de aquí, la web se monta sola ========== */
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nom = n => NOMBRES[n] || n;
+const eqNombre = k => (EQUIPOS[k] && EQUIPOS[k].nombre) || k;
+const eqEscudo = k => (EQUIPOS[k] && EQUIPOS[k].escudo) || "";
+const jugado = p => p.gl !== null && p.gl !== undefined && p.gv !== null && p.gv !== undefined;
+const esNuestro = p => p.local === EQUIPO.id || p.visitante === EQUIPO.id;
+const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const fechaLarga = f => { const d = new Date(f+"T12:00"); return `${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`; };
+const fechaCorta = f => { const d = new Date(f+"T12:00"); return `${d.getDate()}/${d.getMonth()+1}`; };
+
+/* Todos nuestros partidos, con su competición */
+const nuestros = [];
+COMPETICIONES.forEach(c => c.jornadas.forEach(j => j.partidos.forEach(p => {
+  if (esNuestro(p)) nuestros.push({...p, comp:c.id, compNombre:c.nombre, j:j.j});
+})));
+nuestros.sort((a,b) => (a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+
+function nuestroMarcador(p){
+  const casa = p.local === EQUIPO.id;
+  return {gf: casa ? p.gl : p.gv, gc: casa ? p.gv : p.gl, casa};
+}
+
+/* ---------- Cabecera ---------- */
+$("#escudo").src = EQUIPO.escudo;
+$("#subtitulo").textContent = `${EQUIPO.deporte} · Temporada ${EQUIPO.temporada}`;
+$("#cat").textContent = EQUIPO.categoria;
+document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
+
+(function proximo(){
+  const vivo = nuestros.find(p => p.estado === "jugando" || p.estado === "descanso");
+  const p = vivo || nuestros.find(p => !jugado(p));
+  if (!p) { $("#proximo").innerHTML = ""; return; }
+  let top, centro;
+  if (vivo) {
+    top = `<span>${esc(p.compNombre)} · Jornada ${p.j}</span><span class="vivo">${p.estado === "descanso" ? "Descanso" : "En juego"}</span>`;
+    centro = `<div class="res">${p.gl ?? 0} – ${p.gv ?? 0}</div>`;
+  } else {
+    const hoy = new Date(); hoy.setHours(0,0,0,0);
+    const dia = new Date(p.fecha+"T00:00");
+    const n = Math.round((dia - hoy) / 864e5);
+    const cuenta = n === 0 ? "Hoy" : n === 1 ? "Mañana" : n > 1 ? `Faltan ${n} días` : "";
+    top = `<span>${esc(p.compNombre)}</span><span>Jornada ${p.j}</span>`;
+    centro = `<div class="hora">${esc(p.hora)}</div><div class="fecha">${fechaLarga(p.fecha)}</div>${cuenta ? `<div class="cuenta">${cuenta}</div>` : ""}`;
+  }
+  const lado = k => `<div class="eq ${k===EQUIPO.id?'nos':''}"><img src="${eqEscudo(k)}" alt="">${esc(eqNombre(k))}</div>`;
+  $("#proximo").innerHTML = `<div class="marcador"><div class="marcador-top">${top}</div>${vivo?"":`<p class="prox-t">Próximo partido</p>`}
+    <div class="duelo">${lado(p.local)}<div class="centro">${centro}</div>${lado(p.visitante)}</div></div>`;
+})();
+
+/* ---------- Resumen de la temporada ---------- */
+(function resumen(){
+  const j = nuestros.filter(jugado);
+  if (!j.length) { $("#resumen").innerHTML = ""; return; }
+  let g=0,e=0,p=0,gf=0,gc=0;
+  j.forEach(x => { const m = nuestroMarcador(x); gf+=m.gf; gc+=m.gc; m.gf>m.gc?g++:m.gf<m.gc?p++:e++; });
+  const t = [[j.length,"Jugados"],[g,"Ganados"],[e,"Empatados"],[p,"Perdidos"],[gf,"A favor"],[gc,"En contra"]];
+  $("#resumen").innerHTML = `<div class="resumen">${t.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>`;
+})();
+
+/* ---------- Competiciones ---------- */
+function clasificacion(c){
+  const T = {};
+  c.equipos.forEach(k => T[k] = {k,pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0});
+  c.jornadas.forEach(j => j.partidos.forEach(p => {
+    if (!jugado(p)) return;
+    [[p.local,p.gl,p.gv],[p.visitante,p.gv,p.gl]].forEach(([k,a,b]) => {
+      const r = T[k] || (T[k] = {k,pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0});
+      r.pj++; r.gf+=a; r.gc+=b;
+      if (a>b){r.g++;r.pts+=3} else if (a<b){r.p++} else {r.e++;r.pts+=1}
+    });
+  }));
+  return Object.values(T).sort((a,b)=> b.pts-a.pts || (b.gf-b.gc)-(a.gf-a.gc) || b.gf-a.gf || eqNombre(a.k).localeCompare(eqNombre(b.k)));
+}
+
+function cruce(p){
+  const nos = esNuestro(p);
+  let cls = "cruce", r;
+  if (jugado(p)) {
+    r = `<div class="r">${p.gl} – ${p.gv}</div>`;
+    if (nos) { const m = nuestroMarcador(p); cls += " nos " + (m.gf>m.gc?"g":m.gf<m.gc?"p":"e"); }
+  } else {
+    r = `<div class="r hora">${p.hora || "—"}</div>`;
+    if (nos) cls += " nos";
+  }
+  let det = "";
+  if (nos && jugado(p)) {
+    const partes = [];
+    if (p.descanso) partes.push(`Descanso ${esc(p.descanso)}`);
+    if (p.goleadores && p.goleadores.length) partes.push("Goles: " + p.goleadores.map(x=>`<b>${esc(nom(x.n))}</b>${x.g>1?` (${x.g})`:""}`).join(", "));
+    if (p.porteros && p.porteros.length) partes.push("Portería: " + p.porteros.map(x=>`<b>${esc(nom(x.n))}</b> ${x.ge} enc.`).join(", "));
+    if (partes.length) det = `<div class="detalle">${partes.join(" · ")}</div>`;
+  } else if (!jugado(p) && p.fecha) {
+    det = `<div class="detalle">${fechaLarga(p.fecha)}</div>`;
+  }
+  return `<div class="${cls}"><div class="l">${esc(p.local)}</div>${r}<div>${esc(p.visitante)}</div>${det}</div>`;
+}
+
+(function competiciones(){
+  const html = COMPETICIONES.map((c, i) => {
+    const hay = c.jornadas.length > 0;
+    const jug = c.jornadas.flatMap(j=>j.partidos).filter(p=>esNuestro(p)&&jugado(p)).length;
+    const estado = !hay ? "Pendiente de calendario" : jug ? `${jug} partido${jug>1?"s":""} jugado${jug>1?"s":""}` : "Por empezar";
+    let cuerpo = `<p class="nota">${esc(c.info)}</p>`;
+    if (hay && c.tabla && c.equipos.length) {
+      const filas = clasificacion(c).map((r,n)=>`<tr class="${r.k===EQUIPO.id?'nos':''}">
+        <td>${n+1}</td><td class="eqc"><span class="e"><img src="${eqEscudo(r.k)}" alt="">${esc(r.k)}</span></td>
+        <td>${r.pj}</td><td>${r.g}</td><td>${r.e}</td><td>${r.p}</td><td>${r.gf}:${r.gc}</td><td class="pts">${r.pts}</td></tr>`).join("");
+      cuerpo += `<div class="tabla-wrap"><table><thead><tr><th>#</th><th class="eqc">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Goles</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table></div>`;
+    }
+    cuerpo += c.jornadas.map(j => {
+      const fechas = [...new Set(j.partidos.map(p=>p.fecha).filter(Boolean))].map(fechaCorta).join(" y ");
+      return `<div class="jornada"><h4>Jornada ${j.j}<span>${fechas}${j.descansa?` · Descansa ${esc(j.descansa)}`:""}</span></h4>
+        ${j.partidos.map(cruce).join("")}</div>`;
+    }).join("");
+    if (c.ffib) cuerpo += `<div class="ffib"><a class="btn" href="${esc(c.ffib)}" target="_blank" rel="noopener">Resultados y clasificación oficiales en la FFIB</a></div>`;
+    const abierta = hay && (c.jornadas.some(j=>j.partidos.some(p=>esNuestro(p)&&!jugado(p))) || i === 0);
+    return `<details class="comp ${hay?'':'vacia'}" ${abierta?"open":""}>
+      <summary><div><h3>${esc(c.nombre)}</h3><span class="estado">${estado}</span></div><span class="flecha" aria-hidden="true">⌄</span></summary>
+      <div class="comp-cuerpo">${cuerpo}</div></details>`;
+  }).join("");
+  $("#competiciones").innerHTML = html;
+})();
+
+/* ---------- Estadísticas ---------- */
+function stats(filtro){
+  const lista = nuestros.filter(p => jugado(p) && (filtro === "todo" || p.comp === filtro));
+  const G = {}, P = {};
+  lista.forEach(p => {
+    const m = nuestroMarcador(p);
+    (p.goleadores||[]).forEach(x => { const n = nom(x.n); G[n] = (G[n]||0) + x.g; });
+    (p.porteros||[]).forEach(x => {
+      const n = nom(x.n); const r = P[n] || (P[n] = {pj:0, ge:0, cero:0});
+      r.pj++; r.ge += x.ge; if (m.gc === 0) r.cero++;
+    });
+  });
+  return {G, P};
+}
+const conPartidos = COMPETICIONES.filter(c => nuestros.some(p => p.comp===c.id && jugado(p)));
+let filtroActual = conPartidos.length ? conPartidos[conPartidos.length-1].id : "todo";
+
+function pintarFiltros(){
+  const ops = [["todo","Toda la temporada"], ...conPartidos.map(c=>[c.id,c.nombre])];
+  document.querySelectorAll(".filtro").forEach(f => {
+    f.innerHTML = ops.length > 1 ? ops.map(([id,t])=>`<button type="button" data-f="${id}" aria-pressed="${id===filtroActual}">${esc(t)}</button>`).join("") : "";
+  });
+}
+function pintarStats(){
+  const {G, P} = stats(filtroActual);
+  const g = Object.entries(G).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]));
+  const max = g.length ? g[0][1] : 1;
+  $("#lista-goleadores").innerHTML = g.length ? g.map(([n,v],i)=>`<div class="fila"><span class="pos">${i>0&&g[i-1][1]===v?"":i+1}</span>
+      <div><div class="n">${esc(n)}</div><div class="barra" style="width:${Math.max(6,v/max*100)}%"></div></div>
+      <div><span class="num">${v}</span><span class="sub">gol${v>1?"es":""}</span></div></div>`).join("")
+    : `<p class="vacio">Los goles aparecerán aquí después del primer partido.</p>`;
+  const p = Object.entries(P).sort((a,b)=>(a[1].ge/a[1].pj)-(b[1].ge/b[1].pj) || b[1].pj-a[1].pj);
+  const maxPj = p.length ? Math.max(...p.map(x=>x[1].pj)) : 1;
+  $("#lista-porteros").innerHTML = p.length ? p.map(([n,r],i)=>`<div class="fila"><span class="pos">${i+1}</span>
+      <div><div class="n">${esc(n)}</div><div class="barra" style="width:${Math.max(6,r.pj/maxPj*100)}%"></div></div>
+      <div><span class="num">${r.ge}</span><span class="sub">encajados en ${r.pj} partido${r.pj>1?"s":""}${r.cero?` · ${r.cero} a cero`:""}</span></div></div>`).join("")
+    : `<p class="vacio">Los porteros aparecerán aquí después del primer partido.</p>`;
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".filtro button"); if (!b) return;
+  filtroActual = b.dataset.f; pintarFiltros(); pintarStats();
+});
+pintarFiltros(); pintarStats();
+
+/* ---------- Galería ---------- */
+$("#fotos").innerHTML = FOTOS.map((f,i)=>`<button type="button" data-i="${i}"><img src="${f.src}" alt="${esc(f.pie)}" loading="lazy"><span>${esc(f.pie)}</span></button>`).join("");
+const visor = $("#visor");
+$("#fotos").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const f = FOTOS[+b.dataset.i];
+  visor.querySelector("img").src = f.src; visor.querySelector("img").alt = f.pie;
+  visor.querySelector("p").textContent = f.pie; visor.showModal();
+});
+$("#cerrar").onclick = () => visor.close();
+visor.addEventListener("click", e => { if (e.target === visor) visor.close(); });
+
+$("#pie").textContent = `${EQUIPO.nombre} · ${EQUIPO.categoria} · ${EQUIPO.deporte} · Temporada ${EQUIPO.temporada}`;
+</script>
+</body>
+</html>
