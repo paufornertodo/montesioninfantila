@@ -63,7 +63,7 @@ const COMPETICIONES = [
             {m:"1-5", n:"Toni",     a:"", nota:"de rechace"},
             {m:"1-6", n:"Bosco",    a:"Juanito"}
           ],
-          porteros: [{n:"Santi", ge:1}] }
+          porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}] }
       ]},
       { j: 2, descansa: "Inter Campos", partidos: [
         { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
