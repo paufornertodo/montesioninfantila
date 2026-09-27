@@ -111,6 +111,16 @@ td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .cruce.nos.e .r{background:var(--gris)}
 .detalle{grid-column:1/-1;font-size:.88rem;color:var(--gris);font-weight:400;text-align:center;padding-bottom:4px}
 .detalle b{color:var(--tinta);font-weight:600}
+.cronica{grid-column:1/-1;list-style:none;margin:4px auto 6px;padding:0;max-width:420px;width:100%;font-weight:400;font-size:.9rem}
+.cronica li{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:baseline;padding:4px 0;border-bottom:1px dashed var(--azul-claro);text-align:left}
+.cronica li:last-child{border-bottom:0}
+.cronica .m{font-family:var(--display);font-weight:800;font-size:1.05rem;text-align:center;background:var(--azul-claro);border-radius:5px}
+.cronica b{font-weight:600}
+.cronica i{color:var(--gris)}
+.cronica small{display:block;color:var(--gris);font-size:.82rem}
+.cronica .riv{color:var(--gris)}
+.cronica .riv .m{background:#F3D9DA;color:var(--rojo)}
+.asistencias .barra{background:var(--noche)}
 
 .ffib{margin-top:24px;border-top:2px solid var(--azul-claro);padding-top:16px}
 .ffib a.btn{display:inline-block;background:var(--noche);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:6px 14px;font-size:.9rem}
@@ -171,6 +181,7 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
   <ul>
     <li><a href="#partidos">Partidos</a></li>
     <li><a href="#goleadores">Goleadores</a></li>
+    <li><a href="#asistencias">Asistencias</a></li>
     <li><a href="#porteros">Porteros</a></li>
     <li><a href="#galeria">Galería</a></li>
   </ul>
@@ -187,6 +198,12 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
     <h2>Goleadores</h2>
     <div class="filtro" data-para="goleadores"></div>
     <div class="lista" id="lista-goleadores"></div>
+  </section>
+
+  <section id="asistencias">
+    <h2>Asistencias</h2>
+    <div class="filtro" data-para="asistencias"></div>
+    <div class="lista asistencias" id="lista-asistencias"></div>
   </section>
 
   <section id="porteros">
@@ -227,6 +244,16 @@ COMPETICIONES.forEach(c => c.jornadas.forEach(j => j.partidos.forEach(p => {
   if (esNuestro(p)) nuestros.push({...p, comp:c.id, compNombre:c.nombre, j:j.j});
 })));
 nuestros.sort((a,b) => (a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+
+/* Goleadores del partido: del gol a gol si lo hay, si no de la lista resumida */
+function golesDe(p){
+  if (p.goles && p.goles.length) {
+    const t = {};
+    p.goles.filter(x => x.tipo !== "rival").forEach(x => { t[x.n] = (t[x.n]||0) + 1; });
+    return Object.entries(t).map(([n,g]) => ({n,g}));
+  }
+  return p.goleadores || [];
+}
 
 function nuestroMarcador(p){
   const casa = p.local === EQUIPO.id;
@@ -299,9 +326,13 @@ function cruce(p){
   if (nos && jugado(p)) {
     const partes = [];
     if (p.descanso) partes.push(`Descanso ${esc(p.descanso)}`);
-    if (p.goleadores && p.goleadores.length) partes.push("Goles: " + p.goleadores.map(x=>`<b>${esc(nom(x.n))}</b>${x.g>1?` (${x.g})`:""}`).join(", "));
+    const gs = golesDe(p).slice().sort((a,b)=>b.g-a.g);
+    if (gs.length && !(p.goles && p.goles.length)) partes.push("Goles: " + gs.map(x=>`<b>${esc(nom(x.n))}</b>${x.g>1?` (${x.g})`:""}`).join(", "));
     if (p.porteros && p.porteros.length) partes.push("Portería: " + p.porteros.map(x=>`<b>${esc(nom(x.n))}</b> ${x.ge} enc.`).join(", "));
     if (partes.length) det = `<div class="detalle">${partes.join(" · ")}</div>`;
+    if (p.goles && p.goles.length) det += `<ol class="cronica">${p.goles.map(x => x.tipo === "rival"
+      ? `<li class="riv"><span class="m">${esc(x.m||"")}</span><span>Gol del rival${x.encaja?`<small>encaja ${esc(nom(x.encaja))}</small>`:""}</span></li>`
+      : `<li><span class="m">${esc(x.m||"")}</span><span><b>${esc(nom(x.n))}</b>${x.nota?` <i>${esc(x.nota)}</i>`:""}${x.a?`<small>asistencia de ${esc(nom(x.a))}</small>`:""}</span></li>`).join("")}</ol>`;
   } else if (!jugado(p) && p.fecha) {
     det = `<div class="detalle">${fechaLarga(p.fecha)}${p.hora?"":" · hora por fijar"}${p.pista?` · ${esc(p.pista)}`:""}</div>`;
   }
@@ -337,16 +368,17 @@ function cruce(p){
 /* ---------- Estadísticas ---------- */
 function stats(filtro){
   const lista = nuestros.filter(p => jugado(p) && (filtro === "todo" || p.comp === filtro));
-  const G = {}, P = {};
+  const G = {}, P = {}, A = {};
   lista.forEach(p => {
     const m = nuestroMarcador(p);
-    (p.goleadores||[]).forEach(x => { const n = nom(x.n); G[n] = (G[n]||0) + x.g; });
+    golesDe(p).forEach(x => { const n = nom(x.n); G[n] = (G[n]||0) + x.g; });
+    (p.goles||[]).forEach(x => { if (x.tipo !== "rival" && x.a) { const n = nom(x.a); A[n] = (A[n]||0) + 1; } });
     (p.porteros||[]).forEach(x => {
       const n = nom(x.n); const r = P[n] || (P[n] = {pj:0, ge:0, cero:0});
       r.pj++; r.ge += x.ge; if (m.gc === 0) r.cero++;
     });
   });
-  return {G, P};
+  return {G, P, A};
 }
 const conPartidos = COMPETICIONES.filter(c => nuestros.some(p => p.comp===c.id && jugado(p)));
 let filtroActual = conPartidos.length ? conPartidos[conPartidos.length-1].id : "todo";
@@ -358,7 +390,13 @@ function pintarFiltros(){
   });
 }
 function pintarStats(){
-  const {G, P} = stats(filtroActual);
+  const {G, P, A} = stats(filtroActual);
+  const a = Object.entries(A).sort((x,y)=>y[1]-x[1] || x[0].localeCompare(y[0]));
+  const maxA = a.length ? a[0][1] : 1;
+  $("#lista-asistencias").innerHTML = a.length ? a.map(([n,v],i)=>`<div class="fila"><span class="pos">${i>0&&a[i-1][1]===v?"":i+1}</span>
+      <div><div class="n">${esc(n)}</div><div class="barra" style="width:${Math.max(6,v/maxA*100)}%"></div></div>
+      <div><span class="num">${v}</span><span class="sub">asist.</span></div></div>`).join("")
+    : `<p class="vacio">Todavía no hay asistencias anotadas.</p>`;
   const g = Object.entries(G).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]));
   const max = g.length ? g[0][1] : 1;
   $("#lista-goleadores").innerHTML = g.length ? g.map(([n,v],i)=>`<div class="fila"><span class="pos">${i>0&&g[i-1][1]===v?"":i+1}</span>

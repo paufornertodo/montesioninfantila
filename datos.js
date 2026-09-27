@@ -34,7 +34,10 @@ const NOMBRES = {
      gl / gv           : goles local / visitante (null = sin jugar)
    Solo en los partidos del Montesión:
      descanso          : "1-0" (marcador al descanso, como local-visitante)
-     goleadores        : [{n:"Nombre", g:2}]
+     goles             : gol a gol, en orden, con el marcador en local-visitante:
+                         {m:"0-1", n:"Goleador", a:"Asistente", nota:"de rechace"}
+                         {m:"1-3", tipo:"rival", encaja:"Portero"}   (gol del rival)
+     goleadores        : [{n:"Nombre", g:2}]  (solo si no se tiene el gol a gol)
      porteros          : [{n:"Nombre", ge:1}]  (ge = goles encajados; 0 si no encajó)
      estado            : "" | "jugando" | "descanso"  (para el directo)
    ---------------------------------------------------------- */
@@ -49,8 +52,18 @@ const COMPETICIONES = [
     jornadas: [
       { j: 1, descansa: "Juan de Ávila", partidos: [
         { local: "Viva Sports",  visitante: "Son Oliva", fecha: "2026-09-26", hora: "16:00", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null },
-        { local: "Inter Campos", visitante: "Montesión", fecha: "2026-09-27", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null,
-          descanso: "", estado: "", goleadores: [], porteros: [] }
+        { local: "Inter Campos", visitante: "Montesión", fecha: "2026-09-27", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: 1, gv: 6,
+          descanso: "", estado: "",
+          goles: [
+            {m:"0-1", n:"Juanito",  a:"Tomás"},
+            {m:"0-2", n:"Toni",     a:"Tomás"},
+            {m:"0-3", n:"Álvaro M", a:"Jaime"},
+            {m:"1-3", tipo:"rival", encaja:"Santi"},
+            {m:"1-4", n:"Bosco",    a:"", nota:"gol olímpico"},
+            {m:"1-5", n:"Toni",     a:"", nota:"de rechace"},
+            {m:"1-6", n:"Bosco",    a:"Juanito"}
+          ],
+          porteros: [{n:"Santi", ge:1}] }
       ]},
       { j: 2, descansa: "Inter Campos", partidos: [
         { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
