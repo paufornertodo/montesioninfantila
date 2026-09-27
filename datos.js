@@ -51,7 +51,7 @@ const COMPETICIONES = [
     equipos: ["Montesión", "Inter Campos", "Son Oliva", "Viva Sports", "Juan de Ávila"],
     jornadas: [
       { j: 1, descansa: "Juan de Ávila", partidos: [
-        { local: "Viva Sports",  visitante: "Son Oliva", fecha: "2026-09-26", hora: "16:00", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null },
+        { local: "Viva Sports",  visitante: "Son Oliva", fecha: "2026-09-26", hora: "16:00", pista: "P.M. Secar de la Real (parquet)", gl: 1, gv: 5 },
         { local: "Inter Campos", visitante: "Montesión", fecha: "2026-09-27", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: 1, gv: 6,
           descanso: "", estado: "",
           goles: [
@@ -66,8 +66,8 @@ const COMPETICIONES = [
           porteros: [{n:"Santi", ge:1}] }
       ]},
       { j: 2, descansa: "Inter Campos", partidos: [
-        { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
-        { local: "Montesión",    visitante: "Viva Sports", fecha: "2026-10-04", hora: "16:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+        { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
+        { local: "Montesión",    visitante: "Viva Sports", fecha: "2026-10-03", hora: "17:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
           descanso: "", estado: "", goleadores: [], porteros: [] }
       ]},
       { j: 3, descansa: "Son Oliva", partidos: [
