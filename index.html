@@ -97,9 +97,20 @@ tr.nos td{background:#FFF7D6;font-weight:600}
 td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .tabla-wrap{overflow-x:auto;margin-bottom:22px}
 
-.jornada{margin-top:18px}
-.jornada h4{margin:0 0 8px;font-size:1rem}
-.jornada h4 span{display:block;font-weight:400;color:var(--gris);font-size:.88rem}
+.jornada{margin-top:10px;border-top:2px solid var(--azul-claro)}
+.jornada>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:11px 2px}
+.jornada>summary::-webkit-details-marker{display:none}
+.jornada>summary:hover .j-tit{color:var(--azul)}
+.j-tit{flex:1;font-weight:600;font-size:1rem;line-height:1.25}
+.j-tit span{display:block;font-weight:400;color:var(--gris);font-size:.86rem}
+.res-j{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1.2;padding:2px 10px;border-radius:6px;background:var(--azul-claro);color:var(--tinta);white-space:nowrap}
+.res-j.g{background:var(--azul);color:#fff}
+.res-j.p{background:var(--rojo);color:#fff}
+.res-j.e{background:var(--gris);color:#fff}
+.res-j.prox,.res-j.desc{font-family:var(--texto);font-size:.85rem;font-weight:600;color:var(--gris);background:var(--azul-claro)}
+.jornada>summary .flecha{font-size:1.2rem;color:var(--gris);transition:transform .2s}
+.jornada[open]>summary .flecha{transform:rotate(180deg)}
+.j-cuerpo{padding-bottom:6px}
 .cruce{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--azul-claro);font-size:.95rem}
 .cruce .l{text-align:right}
 .cruce .r{font-family:var(--display);font-weight:800;font-size:1.25rem;text-align:center;background:var(--azul-claro);border-radius:6px;padding:2px 0}
@@ -405,10 +416,24 @@ function cruce(p){
         <td>${r.pj}</td><td>${r.g}</td><td>${r.e}</td><td>${r.p}</td><td>${r.gf}:${r.gc}</td><td class="pts">${r.pts}</td></tr>`).join("");
       cuerpo += `<div class="tabla-wrap"><table><thead><tr><th>#</th><th class="eqc">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Goles</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table></div>`;
     }
-    cuerpo += c.jornadas.map(j => {
+    /* La jornada en curso queda abierta; las ya jugadas se pliegan y se pueden abrir a mano */
+    let enCurso = c.jornadas.findIndex(j => j.partidos.some(p => !jugado(p)));
+    if (enCurso < 0) enCurso = c.jornadas.length - 1;
+    cuerpo += c.jornadas.map((j, n) => {
       const fechas = [...new Set(j.partidos.map(p=>p.fecha).filter(Boolean))].map(fechaCorta).join(" y ");
-      return `<div class="jornada"><h4>Jornada ${j.j}<span>${fechas}${j.descansa?` · Descansa ${esc(j.descansa)}`:""}</span></h4>
-        ${j.partidos.map(cruce).join("")}</div>`;
+      const nuestro = j.partidos.find(esNuestro);
+      let chip = "";
+      if (nuestro && jugado(nuestro)) {
+        const m = nuestroMarcador(nuestro);
+        chip = `<span class="res-j ${m.gf>m.gc?"g":m.gf<m.gc?"p":"e"}">${m.gf}–${m.gc}</span>`;
+      } else if (nuestro) {
+        chip = `<span class="res-j prox">${nuestro.hora ? esc(nuestro.hora) : "Sin hora"}</span>`;
+      } else if (j.descansa === EQUIPO.id) {
+        chip = `<span class="res-j desc">Descansamos</span>`;
+      }
+      return `<details class="jornada" ${n===enCurso?"open":""}>
+        <summary><div class="j-tit">Jornada ${j.j}<span>${fechas}${j.descansa && j.descansa !== EQUIPO.id?` · Descansa ${esc(j.descansa)}`:""}</span></div>${chip}<span class="flecha" aria-hidden="true">⌄</span></summary>
+        <div class="j-cuerpo">${j.partidos.map(cruce).join("")}</div></details>`;
     }).join("");
     if (c.ffib) cuerpo += `<div class="ffib"><a class="btn" href="${esc(c.ffib)}" target="_blank" rel="noopener">Resultados y clasificación oficiales en la FFIB</a></div>`;
     const abierta = hay && (c.jornadas.some(j=>j.partidos.some(p=>esNuestro(p)&&!jugado(p))) || i === 0);
