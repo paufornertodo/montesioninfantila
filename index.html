@@ -154,6 +154,7 @@ td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .lista{background:#fff;border-radius:14px;padding:6px 20px}
 .fila{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--azul-claro)}
 .fila:last-child{border-bottom:0}
+.fila.sin-pos{grid-template-columns:1fr auto}
 .fila .pos{font-family:var(--display);font-weight:700;color:var(--gris);font-size:1.2rem}
 .fila .n{font-weight:600}
 .fila .barra{height:6px;background:var(--azul);border-radius:3px;margin-top:5px}
@@ -416,9 +417,10 @@ function cruce(p){
         <td>${r.pj}</td><td>${r.g}</td><td>${r.e}</td><td>${r.p}</td><td>${r.gf}:${r.gc}</td><td class="pts">${r.pts}</td></tr>`).join("");
       cuerpo += `<div class="tabla-wrap"><table><thead><tr><th>#</th><th class="eqc">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Goles</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table></div>`;
     }
-    /* La jornada en curso queda abierta; las ya jugadas se pliegan y se pueden abrir a mano */
-    let enCurso = c.jornadas.findIndex(j => j.partidos.some(p => !jugado(p)));
-    if (enCurso < 0) enCurso = c.jornadas.length - 1;
+    /* Se abre la última jornada jugada; las demás se pliegan y se pueden abrir a mano */
+    let enCurso = -1;
+    c.jornadas.forEach((j, n) => { if (j.partidos.some(jugado)) enCurso = n; });
+    if (enCurso < 0) enCurso = 0;
     cuerpo += c.jornadas.map((j, n) => {
       const fechas = [...new Set(j.partidos.map(p=>p.fecha).filter(Boolean))].map(fechaCorta).join(" y ");
       const nuestro = j.partidos.find(esNuestro);
@@ -482,10 +484,10 @@ function pintarStats(){
       <div><div class="n">${esc(n)}</div><div class="barra" style="width:${Math.max(6,v/max*100)}%"></div></div>
       <div><span class="num">${v}</span><span class="sub">gol${v>1?"es":""}</span></div></div>`).join("")
     : `<p class="vacio">Los goles aparecerán aquí después del primer partido.</p>`;
-  const p = Object.entries(P).sort((a,b)=>(a[1].ge/a[1].pj)-(b[1].ge/b[1].pj) || b[1].pj-a[1].pj);
-  const maxPj = p.length ? Math.max(...p.map(x=>x[1].pj)) : 1;
-  $("#lista-porteros").innerHTML = p.length ? p.map(([n,r],i)=>`<div class="fila"><span class="pos">${i+1}</span>
-      <div><div class="n">${esc(n)}</div><div class="barra" style="width:${Math.max(6,r.pj/maxPj*100)}%"></div></div>
+  /* Los porteros no compiten entre ellos: van por orden alfabético, sin puesto */
+  const p = Object.entries(P).sort((a,b)=>a[0].localeCompare(b[0],"es"));
+  $("#lista-porteros").innerHTML = p.length ? p.map(([n,r])=>`<div class="fila sin-pos">
+      <div class="n">${esc(n)}</div>
       <div><span class="num">${r.ge}</span><span class="sub">encajados en ${r.pj} partido${r.pj>1?"s":""}${r.cero?` · ${r.cero} a cero`:""}</span></div></div>`).join("")
     : `<p class="vacio">Los porteros aparecerán aquí después del primer partido.</p>`;
 }
