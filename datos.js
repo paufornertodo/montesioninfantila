@@ -53,7 +53,7 @@ const COMPETICIONES = [
       { j: 1, descansa: "Juan de Ávila", partidos: [
         { local: "Viva Sports",  visitante: "Son Oliva", fecha: "2026-09-26", hora: "16:00", pista: "P.M. Secar de la Real (parquet)", gl: 1, gv: 5 },
         { local: "Inter Campos", visitante: "Montesión", fecha: "2026-09-27", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: 1, gv: 6,
-          descanso: "", estado: "",
+          descanso: "0-3", estado: "",
           goles: [
             {m:"0-1", n:"Juanito",  a:"Tomás"},
             {m:"0-2", n:"Toni",     a:"Tomás"},
