@@ -121,6 +121,17 @@ td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .cronica .riv{color:var(--gris)}
 .cronica .riv .m{background:#F3D9DA;color:var(--rojo)}
 .asistencias .barra{background:var(--noche)}
+.informe{background:#fff;border-radius:14px;padding:18px 20px;border-left:8px solid var(--oro)}
+.informe h3{display:flex;align-items:center;gap:10px}
+.informe h3 img{height:40px;width:auto}
+.informe .ult{margin:12px 0;padding:10px 12px;background:var(--azul-claro);border-radius:10px;font-weight:600}
+.informe .ult span{display:block;font-weight:400;font-size:.88rem;color:var(--gris)}
+.informe .resumen{margin-top:0}
+.informe ul{margin:12px 0 0;padding-left:18px;color:var(--gris);font-size:.92rem}
+.informe h4{margin:18px 0 8px;font-size:1rem}
+.dorsales{display:flex;flex-wrap:wrap;gap:6px}
+.dorsales span{background:var(--azul-claro);border-radius:999px;padding:3px 10px;font-size:.88rem}
+.dorsales b{font-family:var(--display);font-weight:800;margin-right:4px}
 
 .ffib{margin-top:24px;border-top:2px solid var(--azul-claro);padding-top:16px}
 .ffib a.btn{display:inline-block;background:var(--noche);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:6px 14px;font-size:.9rem}
@@ -179,6 +190,7 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
 
 <nav aria-label="Secciones">
   <ul>
+    <li><a href="#rival">Rival</a></li>
     <li><a href="#partidos">Partidos</a></li>
     <li><a href="#goleadores">Goleadores</a></li>
     <li><a href="#asistencias">Asistencias</a></li>
@@ -188,6 +200,11 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
 </nav>
 
 <main>
+  <section id="rival" hidden>
+    <h2>Informe del rival</h2>
+    <div id="informe"></div>
+  </section>
+
   <section id="partidos">
     <h2>Partidos</h2>
     <div id="resumen"></div>
@@ -285,6 +302,43 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
   const lado = k => `<div class="eq ${k===EQUIPO.id?'nos':''}"><img src="${eqEscudo(k)}" alt="">${esc(eqNombre(k))}</div>`;
   $("#proximo").innerHTML = `<div class="marcador"><div class="marcador-top">${top}</div>${vivo?"":`<p class="prox-t">Próximo partido</p>`}
     <div class="duelo">${lado(p.local)}<div class="centro">${centro}</div>${lado(p.visitante)}</div>${p.pista?`<p class="pista">📍 ${esc(p.pista)}</p>`:""}</div>`;
+})();
+
+/* ---------- Informe del próximo rival ---------- */
+(function informe(){
+  if (typeof INFORME === "undefined" || !INFORME.rival) return;
+  const k = INFORME.rival;
+  const prox = nuestros.find(p => !jugado(p) && (p.local === k || p.visitante === k));
+  const suyos = [];
+  COMPETICIONES.forEach(c => c.jornadas.forEach(j => j.partidos.forEach(p => {
+    if ((p.local === k || p.visitante === k) && jugado(p)) suyos.push({...p, comp:c});
+  })));
+  suyos.sort((a,b) => (a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+  let g=0,e=0,pd=0,gf=0,gc=0;
+  suyos.forEach(p => { const a = p.local===k ? p.gl : p.gv, b = p.local===k ? p.gv : p.gl; gf+=a; gc+=b; a>b?g++:a<b?pd++:e++; });
+  let puesto = "—";
+  const comp = suyos.length ? suyos[suyos.length-1].comp : null;
+  if (comp && comp.tabla) { const i = clasificacion(comp).findIndex(r => r.k === k); if (i >= 0) puesto = `${i+1}.º`; }
+  const u = suyos[suyos.length-1];
+  let html = `<div class="informe"><h3><img src="${eqEscudo(k)}" alt="">${esc(eqNombre(k))}</h3>`;
+  if (prox) html += `<p class="nota" style="margin:6px 0 0">Nuestro próximo rival · ${fechaLarga(prox.fecha)}${prox.hora?` a las ${esc(prox.hora)}`:""}</p>`;
+  if (u) {
+    const a = u.local===k ? u.gl : u.gv, b = u.local===k ? u.gv : u.gl;
+    const r = a>b ? "Ganó" : a<b ? "Perdió" : "Empató";
+    html += `<div class="ult">Último partido: ${esc(u.local)} ${u.gl}-${u.gv} ${esc(u.visitante)}<span>${r} · ${fechaLarga(u.fecha)} · ${u.local===k?"en casa":"fuera"}</span></div>`;
+  }
+  const t = [[suyos.length,"Jugados"],[g,"Ganados"],[e,"Empatados"],[pd,"Perdidos"],[`${gf}:${gc}`,"Goles"],[puesto,"Puesto"]];
+  html += `<div class="resumen">${t.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>`;
+  if (INFORME.goleadores && INFORME.goleadores.length) {
+    html += `<h4>Goleadores</h4><div class="dorsales">${INFORME.goleadores.map(x=>`<span><b>${x.d}</b>${esc(x.n)}${x.g>1?` (${x.g})`:""}</span>`).join("")}</div>`;
+  }
+  if (INFORME.plantilla && INFORME.plantilla.length) {
+    html += `<h4>Convocados en su último partido</h4><div class="dorsales">${INFORME.plantilla.map(x=>`<span><b>${x.d}</b>${esc(x.n)}</span>`).join("")}</div>`;
+  }
+  if (INFORME.notas && INFORME.notas.length) html += `<ul>${INFORME.notas.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`;
+  html += `</div>`;
+  $("#informe").innerHTML = html;
+  $("#rival").hidden = false;
 })();
 
 /* ---------- Resumen de la temporada ---------- */

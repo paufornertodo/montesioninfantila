@@ -104,6 +104,21 @@ const COMPETICIONES = [
   }
 ];
 
+/* Informe del próximo rival (se muestra solo; los resultados y la clasificación salen de COMPETICIONES) */
+const INFORME = {
+  rival: "Viva Sports",
+  notas: [
+    "En su partido de la J1 iban 0-4 abajo en el minuto 32; su único gol llegó en el 36'.",
+    "La FFIB no publica quién marca en esta categoría, así que su gol no tiene autor en el acta."
+  ],
+  goleadores: [],   // [{d:10, n:"Nombre", g:1}] si se sabe
+  plantilla: [      // convocados en la J1 según el acta de la FFIB (dorsal y nombre)
+    {d:1,  n:"Daniel G."}, {d:3,  n:"Lucciano S."}, {d:4,  n:"Hugo M."},   {d:9,  n:"Mirko O."},
+    {d:10, n:"Asier E."},  {d:11, n:"Aitor S."},    {d:14, n:"Joel S."},   {d:15, n:"Luca H."},
+    {d:20, n:"Miguel H."}, {d:21, n:"Alexandre T."},{d:23, n:"Gerard M."}
+  ]
+};
+
 /* Galería */
 const FOTOS = [
   { src: "foto-equipo.jpg",       pie: "Foto oficial del equipo y los entrenadores" },
