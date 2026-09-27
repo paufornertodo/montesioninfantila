@@ -61,7 +61,7 @@ const COMPETICIONES = [
             {m:"1-3", tipo:"rival", encaja:"Santi"},
             {m:"1-4", n:"Bosco",    a:"", nota:"gol olímpico"},
             {m:"1-5", n:"Toni",     a:"", nota:"de rechace"},
-            {m:"1-6", n:"Bosco",    a:"Juanito"}
+            {m:"1-6", n:"Álvaro B", a:"Juanito"}
           ],
           porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}] }
       ]},
