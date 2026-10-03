@@ -38,6 +38,7 @@ const NOMBRES = {
                          {m:"0-1", n:"Goleador", a:"Asistente", nota:"de rechace"}
                          {m:"1-3", tipo:"rival", encaja:"Portero"}   (gol del rival)
      goleadores        : [{n:"Nombre", g:2}]  (solo si no se tiene el gol a gol)
+     asistencias       : [{n:"Nombre", a:2}]  (idem: solo si no se tiene el gol a gol)
      porteros          : [{n:"Nombre", ge:1}]  (ge = goles encajados; 0 si no encajó)
      estado            : "" | "jugando" | "descanso"  (para el directo)
    ---------------------------------------------------------- */
@@ -67,8 +68,11 @@ const COMPETICIONES = [
       ]},
       { j: 2, descansa: "Inter Campos", partidos: [
         { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
-        { local: "Montesión",    visitante: "Viva Sports", fecha: "2026-10-03", hora: "17:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goleadores: [], porteros: [] }
+        { local: "Montesión",    visitante: "Viva Sports", fecha: "2026-10-03", hora: "17:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: 2, gv: 5,
+          descanso: "1-1", estado: "",
+          goleadores: [{n:"Bosco", g:1}, {n:"Nacho", g:1}],
+          asistencias: [{n:"Toni", a:2}],
+          porteros: [{n:"Santi", ge:2}, {n:"Ángel", ge:3}] }
       ]},
       { j: 3, descansa: "Son Oliva", partidos: [
         { local: "Juan de Ávila", visitante: "Montesión", fecha: "2026-10-10", hora: "", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null,

@@ -284,6 +284,16 @@ function golesDe(p){
   return p.goleadores || [];
 }
 
+/* Asistencias del partido: del gol a gol si lo hay, si no de la lista resumida */
+function asistenciasDe(p){
+  if (p.goles && p.goles.length) {
+    const t = {};
+    p.goles.filter(x => x.tipo !== "rival" && x.a).forEach(x => { t[x.a] = (t[x.a]||0) + 1; });
+    return Object.entries(t).map(([n,a]) => ({n,a}));
+  }
+  return p.asistencias || [];
+}
+
 function nuestroMarcador(p){
   const casa = p.local === EQUIPO.id;
   return {gf: casa ? p.gl : p.gv, gc: casa ? p.gv : p.gl, casa};
@@ -394,6 +404,8 @@ function cruce(p){
     if (p.descanso) partes.push(`Descanso ${esc(p.descanso)}`);
     const gs = golesDe(p).slice().sort((a,b)=>b.g-a.g);
     if (gs.length && !(p.goles && p.goles.length)) partes.push("Goles: " + gs.map(x=>`<b>${esc(nom(x.n))}</b>${x.g>1?` (${x.g})`:""}`).join(", "));
+    const as = asistenciasDe(p).slice().sort((a,b)=>b.a-a.a);
+    if (as.length && !(p.goles && p.goles.length)) partes.push("Asistencias: " + as.map(x=>`<b>${esc(nom(x.n))}</b>${x.a>1?` (${x.a})`:""}`).join(", "));
     if (p.porteros && p.porteros.length) partes.push("Portería: " + p.porteros.map(x=>`<b>${esc(nom(x.n))}</b> ${x.ge} enc.`).join(", "));
     if (partes.length) det = `<div class="detalle">${partes.join(" · ")}</div>`;
     if (p.goles && p.goles.length) det += `<ol class="cronica">${p.goles.map(x => x.tipo === "rival"
@@ -453,7 +465,7 @@ function stats(filtro){
   lista.forEach(p => {
     const m = nuestroMarcador(p);
     golesDe(p).forEach(x => { const n = nom(x.n); G[n] = (G[n]||0) + x.g; });
-    (p.goles||[]).forEach(x => { if (x.tipo !== "rival" && x.a) { const n = nom(x.a); A[n] = (A[n]||0) + 1; } });
+    asistenciasDe(p).forEach(x => { const n = nom(x.n); A[n] = (A[n]||0) + x.a; });
     (p.porteros||[]).forEach(x => {
       const n = nom(x.n); const r = P[n] || (P[n] = {pj:0, ge:0, cero:0});
       r.pj++; r.ge += x.ge; if (m.gc === 0) r.cero++;
