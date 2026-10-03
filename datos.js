@@ -67,7 +67,7 @@ const COMPETICIONES = [
           porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}] }
       ]},
       { j: 2, descansa: "Inter Campos", partidos: [
-        { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
+        { local: "Son Oliva",    visitante: "Juan de Ávila", fecha: "2026-10-03", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: 16, gv: 0 },
         { local: "Montesión",    visitante: "Viva Sports", fecha: "2026-10-03", hora: "17:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: 2, gv: 5,
           descanso: "1-1", estado: "",
           goleadores: [{n:"Bosco", g:1}, {n:"Nacho", g:1}],
@@ -110,16 +110,18 @@ const COMPETICIONES = [
 
 /* Informe del próximo rival (se muestra solo; los resultados y la clasificación salen de COMPETICIONES) */
 const INFORME = {
-  rival: "Viva Sports",
+  rival: "Juan de Ávila",
   notas: [
-    "En su partido de la J1 iban 0-4 abajo en el minuto 32; su único gol llegó en el 36'.",
-    "La FFIB no publica quién marca en esta categoría, así que su gol no tiene autor en el acta."
+    "Descansaron en la J1, así que el 16-0 de Son Ferragut fue su estreno en la fase.",
+    "Encajaron 8 goles en cada parte y no llegaron a marcar: 0 goles a favor en toda la jornada.",
+    "Les metieron 4 goles en apenas tres minutos, entre el 15' y el 17'.",
+    "La FFIB no publica quién marca en esta categoría, así que el acta no da autores."
   ],
   goleadores: [],   // [{d:10, n:"Nombre", g:1}] si se sabe
-  plantilla: [      // convocados en la J1 según el acta de la FFIB (dorsal y nombre)
-    {d:1,  n:"Daniel G."}, {d:3,  n:"Lucciano S."}, {d:4,  n:"Hugo M."},   {d:9,  n:"Mirko O."},
-    {d:10, n:"Asier E."},  {d:11, n:"Aitor S."},    {d:14, n:"Joel S."},   {d:15, n:"Luca H."},
-    {d:20, n:"Miguel H."}, {d:21, n:"Alexandre T."},{d:23, n:"Gerard M."}
+  plantilla: [      // convocados en la J2 según el acta de la FFIB (dorsal y nombre)
+    {d:1,  n:"Pedro C."},   {d:2,  n:"Francisco B."}, {d:3,  n:"Toni D."},    {d:5,  n:"Zakaria L."},
+    {d:6,  n:"Asse S."},    {d:7,  n:"Benjamín V."},  {d:9,  n:"Goro F."},    {d:12, n:"Juan Antonio F."},
+    {d:14, n:"Vicente B."}, {d:15, n:"Manuel M."},    {d:16, n:"Jannat E."}
   ]
 };
 
