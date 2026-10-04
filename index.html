@@ -140,6 +140,36 @@ td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .informe .resumen{margin-top:0}
 .informe ul{margin:12px 0 0;padding-left:18px;color:var(--gris);font-size:.92rem}
 .informe h4{margin:18px 0 8px;font-size:1rem}
+
+/* Resto de grupos */
+.grupos{margin-top:28px}
+.grupos h3{font-family:var(--display);font-weight:800;font-size:1.6rem;margin:0 0 6px}
+.gr-regla{background:var(--noche);color:#fff;border-radius:12px;padding:14px 16px;margin:12px 0}
+.gr-regla p{margin:0 0 8px;font-size:.92rem;color:#D8E6F6}
+.gr-regla p:last-child{margin-bottom:0}
+.gr-regla b{color:var(--oro)}
+.gr-titular{background:var(--oro);color:var(--tinta);border-radius:12px;padding:12px 16px;margin:12px 0;font-weight:600}
+.grupo{background:#fff;border-radius:12px;margin-top:10px;border-left:6px solid var(--azul-claro)}
+.grupo.mio{border-left-color:var(--oro)}
+.grupo>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:10px;padding:12px 16px}
+.grupo>summary::-webkit-details-marker{display:none}
+.gr-n{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1}
+.gr-lider{flex:1;font-size:.9rem;color:var(--gris)}
+.gr-lider b{color:var(--tinta);font-weight:600}
+.grupo>summary .flecha{font-size:1.1rem;color:var(--gris);transition:transform .2s}
+.grupo[open]>summary .flecha{transform:rotate(180deg)}
+.gr-cuerpo{padding:0 16px 16px}
+.gr-nota{margin:0 0 12px;font-size:.9rem;color:var(--gris)}
+.gr-fila{display:grid;grid-template-columns:20px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--azul-claro);font-size:.92rem;text-align:left}
+.gr-fila .p{font-family:var(--display);font-weight:700;color:var(--gris)}
+.gr-fila .gr-eq{font-weight:500;line-height:1.2;text-align:left}
+.gr-fila .gr-eq small{display:block;font-size:.76rem;color:var(--gris);font-weight:400}
+.gr-fila.club .gr-eq{font-weight:700}
+.gr-fila.nos{background:#FFF7D6;margin:0 -8px;padding-left:8px;padding-right:8px;border-radius:6px}
+.gr-fila .pts{font-family:var(--display);font-weight:800;font-size:1.15rem;min-width:22px;text-align:right}
+.gr-dest{display:inline-block;font-size:.7rem;font-weight:600;border-radius:4px;padding:1px 6px;margin-top:3px}
+.gr-dest.dh{background:var(--noche);color:#fff}
+.gr-dest.reg{background:var(--azul-claro);color:var(--noche)}
 .dorsales{display:flex;flex-wrap:wrap;gap:6px}
 .dorsales span{background:var(--azul-claro);border-radius:999px;padding:3px 10px;font-size:.88rem}
 .dorsales b{font-family:var(--display);font-weight:800;margin-right:4px}
@@ -215,6 +245,7 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
   <section id="rival" hidden>
     <h2>Informe del rival</h2>
     <div id="informe"></div>
+    <div id="grupos"></div>
   </section>
 
   <section id="partidos">
@@ -361,6 +392,50 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
   html += `</div>`;
   $("#informe").innerHTML = html;
   $("#rival").hidden = false;
+})();
+
+/* ---------- Cómo va el resto de grupos ---------- */
+(function grupos(){
+  if (typeof GRUPOS === "undefined" || !GRUPOS.lista || !GRUPOS.lista.length) return;
+  /* Suben los dos primeros a División de Honor; 3.º y 4.º a Primera Regional B */
+  const destino = i => i < 2 ? ["dh","División de Honor"] : i < 4 ? ["reg","1.ª Regional B"] : null;
+
+  const nuestros3 = [];
+  GRUPOS.lista.forEach(gr => gr.equipos.forEach((e,i) => {
+    if (e.club && destino(i)) nuestros3.push({n:e.n, g:gr.g, d:destino(i)[1]});
+  }));
+
+  let html = `<div class="grupos"><h3>Cómo va el resto de grupos</h3>
+    <div class="gr-regla">
+      <p>Siete grupos de cinco equipos. Los <b>dos primeros</b> de cada grupo van a <b>División de Honor</b>; el <b>tercero y el cuarto</b>, a <b>Primera Regional (grupo B)</b>.</p>
+      <p>${esc(GRUPOS.nota)}</p>
+    </div>`;
+
+  if (nuestros3.length) {
+    const txt = nuestros3.map(x => `${esc(x.n)} (grupo ${x.g})`).join(", ");
+    const todos = nuestros3.every(x => x.d === "División de Honor");
+    html += `<p class="gr-titular">Ahora mismo ${nuestros3.length > 1 ? "los equipos del Montesión entrarían" : "el Montesión entraría"}${todos ? " en División de Honor" : ""}: ${txt}.</p>`;
+  }
+
+  html += GRUPOS.lista.map(gr => {
+    const lider = gr.equipos[0];
+    const filas = gr.equipos.map((e,i) => {
+      const d = destino(i);
+      return `<div class="gr-fila ${e.nos?"nos":""} ${e.club?"club":""}">
+        <span class="p">${i+1}</span>
+        <span class="gr-eq">${esc(e.n)}<small>${e.pj} ${e.pj===1?"partido":"partidos"} · ${e.gf}:${e.gc}</small>
+          ${d?`<span class="gr-dest ${d[0]}">${d[1]}</span>`:""}</span>
+        <span class="pts">${e.pts}</span></div>`;
+    }).join("");
+    return `<details class="grupo ${gr.nuestro?"mio":""}" ${gr.nuestro?"open":""}>
+      <summary><span class="gr-n">${esc(gr.g)}</span>
+        <span class="gr-lider">Líder: <b>${esc(lider.n)}</b> · ${lider.pts} pts</span>
+        <span class="flecha" aria-hidden="true">⌄</span></summary>
+      <div class="gr-cuerpo"><p class="gr-nota">${esc(gr.nota)}</p>${filas}</div></details>`;
+  }).join("");
+
+  html += `</div>`;
+  $("#grupos").innerHTML = html;
 })();
 
 /* ---------- Resumen de la temporada ---------- */

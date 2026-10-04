@@ -135,3 +135,68 @@ const FOTOS = [
   { src: "banquillo.jpg",         pie: "Últimas indicaciones en la banda" },
   { src: "vestuario-portero.jpg", pie: "En el vestuario, porteros de amarillo" }
 ];
+
+/* ----------------------------------------------------------
+   EL RESTO DE GRUPOS DE LA FASE DE CLASIFICACIÓN
+   Siete grupos de cinco. Los dos primeros de cada uno van a
+   División de Honor; el tercero y el cuarto, a Primera Regional
+   (grupo B). Datos oficiales de la FFIB.
+   Para actualizar: cambia pts/pj/gf/gc de cada equipo y la nota
+   del grupo. El orden de la lista es el de la clasificación.
+   ---------------------------------------------------------- */
+const GRUPOS = {
+  jornada: 2,
+  fecha: "tras la jornada 2",
+  nota: "Ojo con comparar: por el descanso rotativo no todos han jugado los mismos partidos, y aún quedan tres jornadas.",
+  lista: [
+    { g: "A", nota: "El Alcúdia manda con un 25:1 y un 19-0 al Son Ferrer. El Entreculturas, el otro infantil del club, es segundo con un partido menos.", equipos: [
+      {n:"S.E. Alcúdia A",            pts:6, pj:2, gf:25, gc:1},
+      {n:"Entreculturas Montesión",   pts:3, pj:1, gf:3,  gc:2, club:true},
+      {n:"Son Ferrer Atlètic B",      pts:3, pj:2, gf:10, gc:20},
+      {n:"Sant Joan A",               pts:0, pj:1, gf:1,  gc:6},
+      {n:"Ciutat d'Inca B",           pts:0, pj:2, gf:3,  gc:13}
+    ]},
+    { g: "B", nota: "El Bar Gost arrasa: 28 goles a favor y 2 en contra, con un 21-1 en la segunda jornada. El Palmanova – Viva Sports se suspendió.", equipos: [
+      {n:"Bar Gost · Sagrat Cor A",   pts:6, pj:2, gf:28, gc:2},
+      {n:"Palmanova A",               pts:3, pj:1, gf:5,  gc:4},
+      {n:"C.D. Viva Sports",          pts:0, pj:0, gf:0,  gc:0},
+      {n:"Son Ferrer Atlètic A",      pts:0, pj:1, gf:1,  gc:7},
+      {n:"Grupo Osa B",               pts:0, pj:2, gf:5,  gc:26}
+    ]},
+    { g: "C", nota: "El grupo de las goleadas: el Juan de Ávila A lleva 28-0 y el Grupo Osa ganó 29-0 en su estreno. El Palmanova B ha encajado 52 en dos partidos.", equipos: [
+      {n:"Juan de Ávila A",           pts:6, pj:2, gf:28, gc:0},
+      {n:"Grupo Osa A",               pts:3, pj:1, gf:29, gc:0},
+      {n:"Bar Gost Sagrat Cor B",     pts:3, pj:2, gf:2,  gc:6},
+      {n:"Joves d'Inca A",            pts:0, pj:1, gf:1,  gc:2},
+      {n:"Palmanova B",               pts:0, pj:2, gf:0,  gc:52}
+    ]},
+    { g: "D", nuestro: true, nota: "El nuestro. El Son Oliva se ha escapado con un 21:1 y nosotros somos segundos, por delante del Viva Sports por diferencia de goles.", equipos: [
+      {n:"Son Oliva A",               pts:6, pj:2, gf:21, gc:1},
+      {n:"Colegio Montesión A",       pts:3, pj:2, gf:8,  gc:6, nos:true, club:true},
+      {n:"Viva Sports Masunga",       pts:3, pj:2, gf:6,  gc:7},
+      {n:"Inter Campos",              pts:0, pj:1, gf:1,  gc:6},
+      {n:"Juan de Ávila C",           pts:0, pj:1, gf:0,  gc:16}
+    ]},
+    { g: "E", nota: "El Racing Andratx domina con 21:2. El Ciutat d'Inca C todavía no ha jugado ningún partido.", equipos: [
+      {n:"Racing Club Andratx",       pts:6, pj:2, gf:21, gc:2},
+      {n:"E.T.B. Calvià",             pts:3, pj:1, gf:9,  gc:4},
+      {n:"Ciutat d'Inca C",           pts:0, pj:0, gf:0,  gc:0},
+      {n:"Juan de Ávila B",           pts:0, pj:1, gf:0,  gc:11},
+      {n:"Son Oliva B",               pts:0, pj:2, gf:6,  gc:19}
+    ]},
+    { g: "F", nota: "Aquí juega el Montesión B, y va líder: ganó 12-3 al Pedro Poveda y manda por diferencia de goles en un triple empate a tres puntos.", equipos: [
+      {n:"Colegio Montesión B",       pts:3, pj:1, gf:12, gc:3, club:true},
+      {n:"Joves d'Inca B",            pts:3, pj:1, gf:9,  gc:1},
+      {n:"Manacor Fisiomedia A",      pts:3, pj:1, gf:8,  gc:1},
+      {n:"Pont d'Inca B",             pts:0, pj:1, gf:1,  gc:8},
+      {n:"ACC Pedro Poveda",          pts:0, pj:2, gf:4,  gc:21}
+    ]},
+    { g: "G", nota: "El Pont d'Inca A va lanzado con un 25:1, con un 20-1 al Manacor B incluido. Es el único grupo con empates.", equipos: [
+      {n:"Pont d'Inca A",             pts:6, pj:2, gf:25, gc:1},
+      {n:"S.E. Alcúdia B",            pts:4, pj:2, gf:15, gc:7},
+      {n:"Sant Joan B",               pts:1, pj:1, gf:4,  gc:4},
+      {n:"Ciutat d'Inca A",           pts:0, pj:1, gf:0,  gc:5},
+      {n:"Manacor Fisiomedia B",      pts:0, pj:2, gf:4,  gc:31}
+    ]}
+  ]
+};
