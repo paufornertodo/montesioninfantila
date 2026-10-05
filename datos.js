@@ -75,9 +75,9 @@ const COMPETICIONES = [
           porteros: [{n:"Santi", ge:2}, {n:"Ángel", ge:3}] }
       ]},
       { j: 3, descansa: "Son Oliva", partidos: [
-        { local: "Juan de Ávila", visitante: "Montesión", fecha: "2026-10-10", hora: "", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null,
+        { local: "Juan de Ávila", visitante: "Montesión", fecha: "2026-10-10", hora: "10:00", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null,
           descanso: "", estado: "", goleadores: [], porteros: [] },
-        { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-10", hora: "", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null }
+        { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: null, gv: null }
       ]},
       { j: 4, descansa: "Montesión", partidos: [
         { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-17", hora: "", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null },
