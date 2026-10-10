@@ -108,8 +108,7 @@ const COMPETICIONES = [
             {m:"1-20", n:"Toni",      a:"",       nota:"robando"},
             {m:"1-21", n:"Tomás",     a:"",       nota:"robando"}
           ],
-          porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}],
-          nota: "Ángel se fue a cero y firmó unos cuantos paradones." },
+          porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}] },
         { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: null, gv: null }
       ]},
       { j: 4, descansa: "Montesión", partidos: [
