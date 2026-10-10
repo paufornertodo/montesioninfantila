@@ -492,6 +492,7 @@ function cruce(p){
     const as = asistenciasDe(p).slice().sort((a,b)=>b.a-a.a);
     if (as.length && !(p.goles && p.goles.length)) partes.push("Asistencias: " + as.map(x=>`<b>${esc(nom(x.n))}</b>${x.a>1?` (${x.a})`:""}`).join(", "));
     if (p.porteros && p.porteros.length) partes.push("Portería: " + p.porteros.map(x=>`<b>${esc(nom(x.n))}</b> ${x.ge} enc.`).join(", "));
+    if (p.nota) partes.push(`<i>${esc(p.nota)}</i>`);
     if (partes.length) det = `<div class="detalle">${partes.join(" · ")}</div>`;
     if (p.goles && p.goles.length) det += `<ol class="cronica">${p.goles.map(x => x.tipo === "rival"
       ? `<li class="riv"><span class="m">${esc(x.m||"")}</span><span>Gol del rival${x.encaja?`<small>encaja ${esc(nom(x.encaja))}</small>`:""}</span></li>`

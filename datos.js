@@ -40,6 +40,7 @@ const NOMBRES = {
      goleadores        : [{n:"Nombre", g:2}]  (solo si no se tiene el gol a gol)
      asistencias       : [{n:"Nombre", a:2}]  (idem: solo si no se tiene el gol a gol)
      porteros          : [{n:"Nombre", ge:1}]  (ge = goles encajados; 0 si no encajó)
+     nota              : "texto suelto" (sale junto al resultado, en cursiva)
      estado            : "" | "jugando" | "descanso"  (para el directo)
    ---------------------------------------------------------- */
 const COMPETICIONES = [
@@ -101,7 +102,8 @@ const COMPETICIONES = [
             {m:"1-20", n:"Toni",      a:"",       nota:"robando"},
             {m:"1-21", n:"Tomás",     a:"",       nota:"robando"}
           ],
-          porteros: [{n:"Santi", ge:1}] },
+          porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}],
+          nota: "Ángel se fue a cero y firmó unos cuantos paradones." },
         { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: null, gv: null }
       ]},
       { j: 4, descansa: "Montesión", partidos: [
