@@ -23,6 +23,7 @@ const EQUIPOS = {
 
 /* Nombres que son la misma persona (se escriben como salga y la web los suma bien) */
 const NOMBRES = {
+  "Juan":      "Juanito",
   "Toni":      "Tonete",
   "A Burgos":  "Álvaro Burgos",
   "Álvaro B":  "Álvaro Burgos",
