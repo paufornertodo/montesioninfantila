@@ -75,8 +75,33 @@ const COMPETICIONES = [
           porteros: [{n:"Santi", ge:2}, {n:"Ángel", ge:3}] }
       ]},
       { j: 3, descansa: "Son Oliva", partidos: [
-        { local: "Juan de Ávila", visitante: "Montesión", fecha: "2026-10-10", hora: "10:00", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goleadores: [], porteros: [] },
+        { local: "Juan de Ávila", visitante: "Montesión", fecha: "2026-10-10", hora: "10:00", pista: "P.M. Francesc de Borja Moll (goma)", gl: 1, gv: 21,
+          descanso: "1-11", estado: "",
+          goles: [
+            {m:"1-0",  tipo:"rival", encaja:"Santi"},
+            {m:"1-1",  n:"Jaime",     a:"",       nota:"de robo"},
+            {m:"1-2",  n:"Tonete",    a:"Juan"},
+            {m:"1-3",  n:"Álvaro M",  a:"Jaime"},
+            {m:"1-4",  n:"Tomás",     a:"Jaime"},
+            {m:"1-5",  n:"Juan",      a:"Nacho"},
+            {m:"1-6",  n:"A Burgos",  a:"Juan"},
+            {m:"1-7",  n:"A Burgos",  a:"Juan"},
+            {m:"1-8",  n:"Álvaro M",  a:"Toni"},
+            {m:"1-9",  n:"Bosco",     a:"Jaime"},
+            {m:"1-10", n:"Juan",      a:"",       nota:"de churro"},
+            {m:"1-11", n:"Pablo",     a:"",       nota:"contra el mundo"},
+            {m:"1-12", n:"Bosco",     a:"Jaime"},
+            {m:"1-13", n:"Toni",      a:"Nacho"},
+            {m:"1-14", n:"Pepe",      a:"Tomás"},
+            {m:"1-15", n:"Toni",      a:"",       nota:"de rechace"},
+            {m:"1-16", n:"Juan",      a:"Pepe"},
+            {m:"1-17", n:"Juan",      a:"Nacho"},
+            {m:"1-18", n:"Nacho",     a:"Juan"},
+            {m:"1-19", n:"A Méndez",  a:"Juan"},
+            {m:"1-20", n:"Toni",      a:"",       nota:"robando"},
+            {m:"1-21", n:"Tomás",     a:"",       nota:"robando"}
+          ],
+          porteros: [{n:"Santi", ge:1}] },
         { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: null, gv: null }
       ]},
       { j: 4, descansa: "Montesión", partidos: [
@@ -110,18 +135,18 @@ const COMPETICIONES = [
 
 /* Informe del próximo rival (se muestra solo; los resultados y la clasificación salen de COMPETICIONES) */
 const INFORME = {
-  rival: "Juan de Ávila",
+  rival: "Son Oliva",
   notas: [
-    "Descansaron en la J1, así que el 16-0 de Son Ferragut fue su estreno en la fase.",
-    "Encajaron 8 goles en cada parte y no llegaron a marcar: 0 goles a favor en toda la jornada.",
-    "Les metieron 4 goles en apenas tres minutos, entre el 15' y el 17'.",
+    "El líder y el único invicto del grupo: 5-1 al Viva Sports y 16-0 al Juan de Ávila.",
+    "21 goles a favor y solo 1 en contra. Ese gol se lo marcó el Viva Sports en la primera jornada.",
+    "Jugamos en su pista, el Son Ferragut, y es el último partido de la fase.",
     "La FFIB no publica quién marca en esta categoría, así que el acta no da autores."
   ],
   goleadores: [],   // [{d:10, n:"Nombre", g:1}] si se sabe
   plantilla: [      // convocados en la J2 según el acta de la FFIB (dorsal y nombre)
-    {d:1,  n:"Pedro C."},   {d:2,  n:"Francisco B."}, {d:3,  n:"Toni D."},    {d:5,  n:"Zakaria L."},
-    {d:6,  n:"Asse S."},    {d:7,  n:"Benjamín V."},  {d:9,  n:"Goro F."},    {d:12, n:"Juan Antonio F."},
-    {d:14, n:"Vicente B."}, {d:15, n:"Manuel M."},    {d:16, n:"Jannat E."}
+    {d:1,  n:"Fernando P."}, {d:3,  n:"Adrià C."},  {d:6,  n:"José Daniel C."}, {d:7,  n:"Baltasar G."},
+    {d:10, n:"Noah P."},     {d:11, n:"Samuel C."}, {d:19, n:"Matheo F."},      {d:21, n:"Dani V."},
+    {d:25, n:"Gabriel B."},  {d:80, n:"Xavi A."}
   ]
 };
 
