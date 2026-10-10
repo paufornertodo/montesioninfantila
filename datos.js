@@ -177,9 +177,9 @@ const FOTOS = [
    del grupo. El orden de la lista es el de la clasificación.
    ---------------------------------------------------------- */
 const GRUPOS = {
-  jornada: 2,
-  fecha: "tras la jornada 2",
-  nota: "Ojo con comparar: por el descanso rotativo no todos han jugado los mismos partidos, y aún quedan tres jornadas.",
+  jornada: 3,
+  fecha: "grupo D tras la jornada 3; el resto, tras la 2",
+  nota: "El grupo D está al día. Los otros seis grupos juegan su tercera jornada este fin de semana, así que sus tablas son de la jornada 2. Ojo también con el descanso rotativo: no todos han jugado los mismos partidos.",
   /* Análisis en prosa. Cada entrada es un párrafo; el titulo es opcional. */
   analisis: [
     { t: "El panorama",
@@ -187,11 +187,11 @@ const GRUPOS = {
     { t: "Los que dan miedo",
       p: "Hay seis o siete equipos con números de otra liga. El grupo C es el más bestia de todos: el Juan de Ávila A lleva 28 goles a favor y ninguno en contra, y el Grupo Osa ganó 29-0 en su estreno. A esa altura están el Bar Gost – Sagrat Cor A del grupo B (28:2, con un 21-1), el Pont d'Inca A del G (25:1, con un 20-1) y el Alcúdia A del A (25:1, con un 19-0). Un escalón por debajo, el Racing Andratx y nuestro Son Oliva, los dos rondando el 21:1." },
     { t: "Dónde encajamos nosotros",
-      p: "Nuestro 8:6 parece pobre al lado de esos registros, pero hay que leerlo con contexto. El grupo D es de los más parejos: quitando al Son Oliva, los otros cuatro estamos en un pañuelo, y aquí no hay ningún equipo al que se le metan veinte. En grupos como el C o el G, dos equipos arrasan y los demás hacen de sparring; esas diferencias de goles infladas no significan necesariamente que sean mejores que nosotros, sino que tienen rivales más blandos enfrente." },
-    { t: "La pelea por el segundo puesto",
-      p: "El primer puesto es del Son Oliva salvo catástrofe. La plaza que nos jugamos es la segunda, y el rival directo es el Viva Sports: empatados a tres puntos, por delante nosotros por diferencia de goles, pero con el 2-5 de su favor en el cara a cara. Si acabamos igualados, ese resultado pesa." },
-    { t: "Lo que nos queda, y lo que les queda",
-      p: "A nosotros: el Juan de Ávila C fuera, que es el colista y acaba de encajar un 16-0, y después el Son Oliva, también fuera, que es el partido más duro. A ellos: el Inter Campos y el propio Juan de Ávila C, los dos ganables. Dicho claro, el Viva Sports tiene el calendario más cómodo. Nos conviene ganar en el Francesc de Borja Moll y hacerlo con goles, porque la diferencia puede acabar decidiendo, y confiar en que el Inter Campos les saque algo." },
+      p: "Con el 21-1 al Juan de Ávila, nuestro 29:7 ya está entre los mejores del campeonato. Conviene recordar de dónde sale: 21 de esos goles fueron contra el colista, exactamente igual que las cifras infladas de los equipos que arrasan en otros grupos. Lo que de verdad mide es el 2-5 contra el Viva Sports y lo que pase el 24 en Son Ferragut." },
+    { t: "Cómo está la pelea",
+      p: "Somos primeros por diferencia de goles, pero con un partido más que el Son Oliva, así que lo normal es que nos adelanten. Da igual quién acabe primero: los dos primeros van a División de Honor. La plaza que hay que asegurar es esa segunda, y el rival sigue siendo el Viva Sports." },
+    { t: "Las cuentas",
+      p: "A nosotros solo nos queda el Son Oliva, el 24 y en su pista, porque el 17 descansamos. Al Viva Sports le quedan dos partidos ganables, el Inter Campos y el Juan de Ávila C: si los gana los dos llega a nueve puntos y nos pasa, salvo que puntuemos contra el líder. Y si acabamos empatados, nosotros tenemos muchísima mejor diferencia de goles pero ellos ganaron el cara a cara, así que dependería del criterio de desempate que aplique la FFIB. El Inter Campos, con cero puntos y tres partidos por jugar, aún anda vivo matemáticamente." },
     { t: "Los tres del club",
       p: "Es buen momento para el fútbol sala del Montesión: los tres infantiles están en puesto de División de Honor. El Montesión B lidera el grupo F, el más igualado del campeonato, con tres equipos empatados a puntos y separados por un gol de diferencia. El Entreculturas es segundo del A con un partido menos que el resto." }
   ],
@@ -217,12 +217,12 @@ const GRUPOS = {
       {n:"Joves d'Inca A",            pts:0, pj:1, gf:1,  gc:2},
       {n:"Palmanova B",               pts:0, pj:2, gf:0,  gc:52}
     ]},
-    { g: "D", nuestro: true, nota: "El nuestro. El Son Oliva se ha escapado con un 21:1 y nosotros somos segundos, por delante del Viva Sports por diferencia de goles.", equipos: [
+    { g: "D", nuestro: true, nota: "El nuestro, y de momento somos líderes: el 21-1 al Juan de Ávila nos pone por delante del Son Oliva por diferencia de goles, aunque ellos tienen un partido menos.", equipos: [
+      {n:"Colegio Montesión A",       pts:6, pj:3, gf:29, gc:7, nos:true, club:true},
       {n:"Son Oliva A",               pts:6, pj:2, gf:21, gc:1},
-      {n:"Colegio Montesión A",       pts:3, pj:2, gf:8,  gc:6, nos:true, club:true},
       {n:"Viva Sports Masunga",       pts:3, pj:2, gf:6,  gc:7},
       {n:"Inter Campos",              pts:0, pj:1, gf:1,  gc:6},
-      {n:"Juan de Ávila C",           pts:0, pj:1, gf:0,  gc:16}
+      {n:"Juan de Ávila C",           pts:0, pj:2, gf:1,  gc:37}
     ]},
     { g: "E", nota: "El Racing Andratx domina con 21:2. El Ciutat d'Inca C todavía no ha jugado ningún partido.", equipos: [
       {n:"Racing Club Andratx",       pts:6, pj:2, gf:21, gc:2},
