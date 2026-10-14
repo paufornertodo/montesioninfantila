@@ -110,11 +110,11 @@ const COMPETICIONES = [
             {m:"1-21", n:"Tomás",     a:"",       nota:"robando"}
           ],
           porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:0}] },
-        { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: null, gv: null }
+        { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: 1, gv: 6 }
       ]},
       { j: 4, descansa: "Montesión", partidos: [
-        { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-17", hora: "", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null },
-        { local: "Viva Sports",  visitante: "Juan de Ávila", fecha: "2026-10-17", hora: "", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null }
+        { local: "Viva Sports",  visitante: "Juan de Ávila", fecha: "2026-10-17", hora: "14:00", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null },
+        { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-18", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null }
       ]},
       { j: 5, descansa: "Viva Sports", partidos: [
         { local: "Son Oliva",    visitante: "Montesión", fecha: "2026-10-24", hora: "", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null,
@@ -179,72 +179,72 @@ const FOTOS = [
    ---------------------------------------------------------- */
 const GRUPOS = {
   jornada: 3,
-  fecha: "grupo D tras la jornada 3; el resto, tras la 2",
-  nota: "El grupo D está al día. Los otros seis grupos juegan su tercera jornada este fin de semana, así que sus tablas son de la jornada 2. Ojo también con el descanso rotativo: no todos han jugado los mismos partidos.",
+  fecha: "tras la jornada 3",
+  nota: "Los siete grupos están al día. Ojo con comparar los puntos: por el descanso rotativo no todos han jugado los mismos partidos, y quedan dos jornadas.",
   /* Análisis en prosa. Cada entrada es un párrafo; el titulo es opcional. */
   analisis: [
     { t: "El panorama",
-      p: "Treinta y cinco equipos repartidos en siete grupos de cinco, a una sola vuelta. Cada equipo juega cuatro partidos y descansa una jornada. De ahí salen los catorce que irán a División de Honor, así que el margen es estrecho: basta con un tropiezo para caer al tercer puesto y acabar en Primera Regional." },
+      p: "Treinta y cinco equipos repartidos en siete grupos de cinco, a una sola vuelta. Cada equipo juega cuatro partidos y descansa una jornada. De ahí salen los catorce que irán a División de Honor. Con tres jornadas disputadas y dos por jugar, casi todos los grupos siguen abiertos." },
     { t: "Los que dan miedo",
-      p: "Hay seis o siete equipos con números de otra liga. El grupo C es el más bestia de todos: el Juan de Ávila A lleva 28 goles a favor y ninguno en contra, y el Grupo Osa ganó 29-0 en su estreno. A esa altura están el Bar Gost – Sagrat Cor A del grupo B (28:2, con un 21-1), el Pont d'Inca A del G (25:1, con un 20-1) y el Alcúdia A del A (25:1, con un 19-0). Un escalón por debajo, el Racing Andratx y nuestro Son Oliva, los dos rondando el 21:1." },
+      p: "El Bar Gost – Sagrat Cor A del grupo B se ha puesto por delante de todos: tres victorias, 49 goles a favor y 2 en contra, con un 21-1 y un 21-0 seguidos. El Pont d'Inca A del G es el otro con pleno, 35:1 y un 20-1 al Manacor. Detrás, el grupo C sigue siendo un campo de tiro: el Grupo Osa A lleva 35:1, el Juan de Ávila A 28:0 y hasta el Bar Gost B, que es tercero, acaba de ganar 31-0. El Palmanova B de ese grupo ha encajado 83 goles en tres partidos." },
     { t: "Dónde encajamos nosotros",
-      p: "Con el 21-1 al Juan de Ávila, nuestro 29:7 ya está entre los mejores del campeonato. Conviene recordar de dónde sale: 21 de esos goles fueron contra el colista, exactamente igual que las cifras infladas de los equipos que arrasan en otros grupos. Lo que de verdad mide es el 2-5 contra el Viva Sports y lo que pase el 24 en Son Ferragut." },
+      p: "Nuestro 29:7 es de los mejores del campeonato, aunque conviene recordar que 21 de esos goles fueron contra el colista, igual que pasa con las cifras infladas de otros grupos. El dato que importa es otro: el grupo D es el más igualado de los siete, con tres equipos empatados a seis puntos. En ningún otro grupo hay tanta pelea arriba." },
     { t: "Cómo está la pelea",
-      p: "Somos primeros por diferencia de goles, pero con un partido más que el Son Oliva, así que lo normal es que nos adelanten. Da igual quién acabe primero: los dos primeros van a División de Honor. La plaza que hay que asegurar es esa segunda, y el rival sigue siendo el Viva Sports." },
+      p: "Montesión, Son Oliva y Viva Sports, los tres a seis puntos. Nosotros primeros por diferencia de goles, el Son Oliva segundo con un partido menos y el Viva Sports tercero tras ganar 1-6 al Inter Campos. Dos de los tres se quedan fuera de la segunda plaza, así que esto se decide en las dos últimas jornadas." },
     { t: "Las cuentas",
-      p: "A nosotros solo nos queda el Son Oliva, el 24 y en su pista, porque el 17 descansamos. Al Viva Sports le quedan dos partidos ganables, el Inter Campos y el Juan de Ávila C: si los gana los dos llega a nueve puntos y nos pasa, salvo que puntuemos contra el líder. Y si acabamos empatados, nosotros tenemos muchísima mejor diferencia de goles pero ellos ganaron el cara a cara, así que dependería del criterio de desempate que aplique la FFIB. El Inter Campos, con cero puntos y tres partidos por jugar, aún anda vivo matemáticamente." },
-    { t: "Los tres del club",
-      p: "Es buen momento para el fútbol sala del Montesión: los tres infantiles están en puesto de División de Honor. El Montesión B lidera el grupo F, el más igualado del campeonato, con tres equipos empatados a puntos y separados por un gol de diferencia. El Entreculturas es segundo del A con un partido menos que el resto." }
+      p: "Nosotros descansamos el 17 y solo nos queda el Son Oliva, el 24 en su pista. El Viva Sports juega el 17 contra el Juan de Ávila C, el colista, así que lo normal es que llegue a nueve puntos y con la diferencia de goles muy mejorada. Traducido: si perdemos en Son Ferragut nos quedamos en seis y caemos a la tercera plaza, que es Primera Regional. Si ganamos llegamos a nueve y la diferencia de goles juega a nuestro favor. El 24 es una final." },
+    { t: "Los dos del club",
+      p: "El Montesión B sigue en puesto de División de Honor, segundo del grupo F, aunque su partido de la tercera jornada todavía no figura en el acta. El Entreculturas, en cambio, ha perdido 3-5 contra el Son Ferrer B y se ha caído a la tercera plaza del grupo A: ahora mismo se quedaría en Primera Regional." }
   ],
   lista: [
-    { g: "A", nota: "El Alcúdia manda con un 25:1 y un 19-0 al Son Ferrer. El Entreculturas, el otro infantil del club, es segundo con un partido menos.", equipos: [
+    { g: "A", nota: "Se ha apretado. El Son Ferrer B encajó un 19-0 en el estreno y desde entonces lleva dos victorias, una de ellas al Entreculturas, al que ha echado de los dos primeros puestos.", equipos: [
       {n:"S.E. Alcúdia A",            pts:6, pj:2, gf:25, gc:1},
-      {n:"Entreculturas Montesión",   pts:3, pj:1, gf:3,  gc:2, club:true},
-      {n:"Son Ferrer Atlètic B",      pts:3, pj:2, gf:10, gc:20},
-      {n:"Sant Joan A",               pts:0, pj:1, gf:1,  gc:6},
-      {n:"Ciutat d'Inca B",           pts:0, pj:2, gf:3,  gc:13}
+      {n:"Son Ferrer Atlètic B",      pts:6, pj:3, gf:15, gc:23},
+      {n:"Entreculturas Montesión",   pts:3, pj:2, gf:6,  gc:7, club:true},
+      {n:"Sant Joan A",               pts:3, pj:2, gf:4,  gc:7},
+      {n:"Ciutat d'Inca B",           pts:0, pj:3, gf:4,  gc:16}
     ]},
-    { g: "B", nota: "El Bar Gost arrasa: 28 goles a favor y 2 en contra, con un 21-1 en la segunda jornada. El Palmanova – Viva Sports se suspendió.", equipos: [
-      {n:"Bar Gost · Sagrat Cor A",   pts:6, pj:2, gf:28, gc:2},
+    { g: "B", nota: "El Bar Gost es la apisonadora del campeonato: tres de tres, 49 goles a favor y 2 en contra. El grupo tiene además dos equipos con solo uno y dos partidos jugados.", equipos: [
+      {n:"Bar Gost · Sagrat Cor A",   pts:9, pj:3, gf:49, gc:2},
+      {n:"Son Ferrer Atlètic A",      pts:3, pj:2, gf:12, gc:9},
       {n:"Palmanova A",               pts:3, pj:1, gf:5,  gc:4},
-      {n:"C.D. Viva Sports",          pts:0, pj:0, gf:0,  gc:0},
-      {n:"Son Ferrer Atlètic A",      pts:0, pj:1, gf:1,  gc:7},
-      {n:"Grupo Osa B",               pts:0, pj:2, gf:5,  gc:26}
+      {n:"C.D. Viva Sports",          pts:0, pj:1, gf:0,  gc:21},
+      {n:"Grupo Osa B",               pts:0, pj:3, gf:7,  gc:37}
     ]},
-    { g: "C", nota: "El grupo de las goleadas: el Juan de Ávila A lleva 28-0 y el Grupo Osa ganó 29-0 en su estreno. El Palmanova B ha encajado 52 en dos partidos.", equipos: [
+    { g: "C", nota: "Tres equipos a seis puntos y los tres con números de escándalo. El Palmanova B lleva 0 goles a favor y 83 en contra en tres partidos.", equipos: [
+      {n:"Grupo Osa A",               pts:6, pj:2, gf:35, gc:1},
       {n:"Juan de Ávila A",           pts:6, pj:2, gf:28, gc:0},
-      {n:"Grupo Osa A",               pts:3, pj:1, gf:29, gc:0},
-      {n:"Bar Gost Sagrat Cor B",     pts:3, pj:2, gf:2,  gc:6},
-      {n:"Joves d'Inca A",            pts:0, pj:1, gf:1,  gc:2},
-      {n:"Palmanova B",               pts:0, pj:2, gf:0,  gc:52}
+      {n:"Bar Gost Sagrat Cor B",     pts:6, pj:3, gf:33, gc:6},
+      {n:"Joves d'Inca A",            pts:0, pj:2, gf:2,  gc:8},
+      {n:"Palmanova B",               pts:0, pj:3, gf:0,  gc:83}
     ]},
-    { g: "D", nuestro: true, nota: "El nuestro, y de momento somos líderes: el 21-1 al Juan de Ávila nos pone por delante del Son Oliva por diferencia de goles, aunque ellos tienen un partido menos.", equipos: [
+    { g: "D", nuestro: true, nota: "El nuestro, y el más igualado de los siete: tres equipos empatados a seis puntos. Somos primeros por diferencia de goles.", equipos: [
       {n:"Colegio Montesión A",       pts:6, pj:3, gf:29, gc:7, nos:true, club:true},
       {n:"Son Oliva A",               pts:6, pj:2, gf:21, gc:1},
-      {n:"Viva Sports Masunga",       pts:3, pj:2, gf:6,  gc:7},
-      {n:"Inter Campos",              pts:0, pj:1, gf:1,  gc:6},
+      {n:"Viva Sports Masunga",       pts:6, pj:3, gf:12, gc:8},
+      {n:"Inter Campos",              pts:0, pj:2, gf:2,  gc:12},
       {n:"Juan de Ávila C",           pts:0, pj:2, gf:1,  gc:37}
     ]},
-    { g: "E", nota: "El Racing Andratx domina con 21:2. El Ciutat d'Inca C todavía no ha jugado ningún partido.", equipos: [
+    { g: "E", nota: "Andratx y Calvià, los dos con pleno de victorias, se juegan el grupo entre ellos. El Son Oliva B sacó su primera victoria en un 5-4 ajustado.", equipos: [
       {n:"Racing Club Andratx",       pts:6, pj:2, gf:21, gc:2},
-      {n:"E.T.B. Calvià",             pts:3, pj:1, gf:9,  gc:4},
-      {n:"Ciutat d'Inca C",           pts:0, pj:0, gf:0,  gc:0},
-      {n:"Juan de Ávila B",           pts:0, pj:1, gf:0,  gc:11},
-      {n:"Son Oliva B",               pts:0, pj:2, gf:6,  gc:19}
+      {n:"E.T.B. Calvià",             pts:6, pj:2, gf:22, gc:5},
+      {n:"Son Oliva B",               pts:3, pj:3, gf:11, gc:23},
+      {n:"Juan de Ávila B",           pts:0, pj:2, gf:4,  gc:16},
+      {n:"Ciutat d'Inca C",           pts:0, pj:1, gf:1,  gc:13}
     ]},
-    { g: "F", nota: "Aquí juega el Montesión B, y va líder: ganó 12-3 al Pedro Poveda y manda por diferencia de goles en un triple empate a tres puntos.", equipos: [
+    { g: "F", nota: "El Manacor A ha pasado por encima del grupo y se ha puesto líder. El Montesión B sigue segundo, pero su partido de la jornada 3 todavía no figura como jugado.", equipos: [
+      {n:"Manacor Fisiomedia A",      pts:6, pj:2, gf:19, gc:2},
       {n:"Colegio Montesión B",       pts:3, pj:1, gf:12, gc:3, club:true},
-      {n:"Joves d'Inca B",            pts:3, pj:1, gf:9,  gc:1},
-      {n:"Manacor Fisiomedia A",      pts:3, pj:1, gf:8,  gc:1},
+      {n:"Joves d'Inca B",            pts:3, pj:2, gf:10, gc:12},
       {n:"Pont d'Inca B",             pts:0, pj:1, gf:1,  gc:8},
       {n:"ACC Pedro Poveda",          pts:0, pj:2, gf:4,  gc:21}
     ]},
-    { g: "G", nota: "El Pont d'Inca A va lanzado con un 25:1, con un 20-1 al Manacor B incluido. Es el único grupo con empates.", equipos: [
-      {n:"Pont d'Inca A",             pts:6, pj:2, gf:25, gc:1},
+    { g: "G", nota: "El Pont d'Inca A va lanzado con pleno de victorias y un 35:1. El Ciutat d'Inca A ha reaccionado con un 17-2 y se ha metido en la pelea.", equipos: [
+      {n:"Pont d'Inca A",             pts:9, pj:3, gf:35, gc:1},
       {n:"S.E. Alcúdia B",            pts:4, pj:2, gf:15, gc:7},
-      {n:"Sant Joan B",               pts:1, pj:1, gf:4,  gc:4},
-      {n:"Ciutat d'Inca A",           pts:0, pj:1, gf:0,  gc:5},
-      {n:"Manacor Fisiomedia B",      pts:0, pj:2, gf:4,  gc:31}
+      {n:"Ciutat d'Inca A",           pts:3, pj:2, gf:17, gc:7},
+      {n:"Sant Joan B",               pts:1, pj:2, gf:4,  gc:14},
+      {n:"Manacor Fisiomedia B",      pts:0, pj:3, gf:6,  gc:48}
     ]}
   ]
 };

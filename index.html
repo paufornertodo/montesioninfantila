@@ -416,9 +416,13 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
     </div>`;
 
   if (nuestros3.length) {
-    const txt = nuestros3.map(x => `${esc(x.n)} (grupo ${x.g})`).join(", ");
-    const todos = nuestros3.every(x => x.d === "División de Honor");
-    html += `<p class="gr-titular">Ahora mismo ${nuestros3.length > 1 ? "los equipos del Montesión entrarían" : "el Montesión entraría"}${todos ? " en División de Honor" : ""}: ${txt}.</p>`;
+    const lista = xs => xs.map(x => `${esc(x.n)} (grupo ${x.g})`).join(", ").replace(/, ([^,]*)$/, " y $1");
+    const dh  = nuestros3.filter(x => x.d === "División de Honor");
+    const reg = nuestros3.filter(x => x.d !== "División de Honor");
+    const partes = [];
+    if (dh.length)  partes.push(`${lista(dh)} ${dh.length > 1 ? "entrarían" : "entraría"} en División de Honor`);
+    if (reg.length) partes.push(`${lista(reg)} ${reg.length > 1 ? "se quedarían" : "se quedaría"} en Primera Regional`);
+    html += `<p class="gr-titular">Ahora mismo ${partes.join("; ")}.</p>`;
   }
 
   if (GRUPOS.analisis && GRUPOS.analisis.length) {
