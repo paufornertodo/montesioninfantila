@@ -113,13 +113,13 @@ const COMPETICIONES = [
         { local: "Inter Campos", visitante: "Viva Sports", fecha: "2026-10-11", hora: "11:30", pista: "Pol. Mun. Campos 2 (sintético)", gl: 1, gv: 6 }
       ]},
       { j: 4, descansa: "Montesión", partidos: [
-        { local: "Viva Sports",  visitante: "Juan de Ávila", fecha: "2026-10-17", hora: "14:00", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null },
+        { local: "Viva Sports",  visitante: "Juan de Ávila", fecha: "2026-10-17", hora: "14:00", pista: "P.M. Secar de la Real (parquet)", gl: 5, gv: 3 },
         { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-18", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null }
       ]},
       { j: 5, descansa: "Viva Sports", partidos: [
-        { local: "Son Oliva",    visitante: "Montesión", fecha: "2026-10-24", hora: "", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null,
+        { local: "Son Oliva",    visitante: "Montesión", fecha: "2026-10-24", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null,
           descanso: "", estado: "", goleadores: [], porteros: [] },
-        { local: "Juan de Ávila", visitante: "Inter Campos", fecha: "2026-10-24", hora: "", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null }
+        { local: "Juan de Ávila", visitante: "Inter Campos", fecha: "2026-10-25", hora: "10:00", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null }
       ]}
     ]
   },
@@ -178,9 +178,9 @@ const FOTOS = [
    del grupo. El orden de la lista es el de la clasificación.
    ---------------------------------------------------------- */
 const GRUPOS = {
-  jornada: 3,
-  fecha: "tras la jornada 3",
-  nota: "Los siete grupos están al día. Ojo con comparar los puntos: por el descanso rotativo no todos han jugado los mismos partidos, y quedan dos jornadas.",
+  jornada: 4,
+  fecha: "grupo D tras la jornada 4; el resto, tras la 3",
+  nota: "En el grupo D falta por jugarse el Inter Campos – Son Oliva. Los otros seis grupos están disputando su cuarta jornada este fin de semana, así que sus tablas son de la jornada 3. Ojo también con el descanso rotativo: no todos han jugado los mismos partidos.",
   /* Análisis en prosa. Cada entrada es un párrafo; el titulo es opcional. */
   analisis: [
     { t: "El panorama",
@@ -190,9 +190,9 @@ const GRUPOS = {
     { t: "Dónde encajamos nosotros",
       p: "Nuestro 29:7 es de los mejores del campeonato, aunque conviene recordar que 21 de esos goles fueron contra el colista, igual que pasa con las cifras infladas de otros grupos. El dato que importa es otro: el grupo D es el más igualado de los siete, con tres equipos empatados a seis puntos. En ningún otro grupo hay tanta pelea arriba." },
     { t: "Cómo está la pelea",
-      p: "Montesión, Son Oliva y Viva Sports, los tres a seis puntos. Nosotros primeros por diferencia de goles, el Son Oliva segundo con un partido menos y el Viva Sports tercero tras ganar 1-6 al Inter Campos. Dos de los tres se quedan fuera de la segunda plaza, así que esto se decide en las dos últimas jornadas." },
+      p: "El Viva Sports ya ha acabado su calendario y se ha quedado con nueve puntos. Le costó más de lo esperado: ganó 5-3 al Juan de Ávila C, el colista, y se quedó con un 17:11 que es, de largo, la peor diferencia de goles de los tres de arriba. Nosotros y el Son Oliva seguimos con seis, y los dos tenemos partido pendiente: precisamente el nuestro, el uno contra el otro." },
     { t: "Las cuentas",
-      p: "Nosotros descansamos el 17 y solo nos queda el Son Oliva, el 24 en su pista. El Viva Sports juega el 17 contra el Juan de Ávila C, el colista, así que lo normal es que llegue a nueve puntos y con la diferencia de goles muy mejorada. Traducido: si perdemos en Son Ferragut nos quedamos en seis y caemos a la tercera plaza, que es Primera Regional. Si ganamos llegamos a nueve y la diferencia de goles juega a nuestro favor. El 24 es una final." },
+      p: "No hay vuelta de hoja: hay que ganar el 24 en Son Ferragut. Ganando llegamos a nueve, igualamos al Viva Sports y nuestra diferencia de goles es mucho mejor que la suya, así que la plaza sería nuestra. Empatar no sirve, porque nos quedaríamos en siete. Y perder tampoco, claro. Antes, este domingo, el Son Oliva juega en Campos: si gana se pone a nueve y llega al último partido con todo a favor." },
     { t: "Los dos del club",
       p: "El Montesión B sigue en puesto de División de Honor, segundo del grupo F, aunque su partido de la tercera jornada todavía no figura en el acta. El Entreculturas, en cambio, ha perdido 3-5 contra el Son Ferrer B y se ha caído a la tercera plaza del grupo A: ahora mismo se quedaría en Primera Regional." }
   ],
@@ -218,12 +218,12 @@ const GRUPOS = {
       {n:"Joves d'Inca A",            pts:0, pj:2, gf:2,  gc:8},
       {n:"Palmanova B",               pts:0, pj:3, gf:0,  gc:83}
     ]},
-    { g: "D", nuestro: true, nota: "El nuestro, y el más igualado de los siete: tres equipos empatados a seis puntos. Somos primeros por diferencia de goles.", equipos: [
+    { g: "D", nuestro: true, nota: "El nuestro. El Viva Sports ya ha terminado sus cuatro partidos y manda con nueve puntos, aunque su 5-3 al colista le ha dejado una diferencia de goles pobre. Falta el Inter Campos – Son Oliva.", equipos: [
+      {n:"Viva Sports Masunga",       pts:9, pj:4, gf:17, gc:11},
       {n:"Colegio Montesión A",       pts:6, pj:3, gf:29, gc:7, nos:true, club:true},
       {n:"Son Oliva A",               pts:6, pj:2, gf:21, gc:1},
-      {n:"Viva Sports Masunga",       pts:6, pj:3, gf:12, gc:8},
       {n:"Inter Campos",              pts:0, pj:2, gf:2,  gc:12},
-      {n:"Juan de Ávila C",           pts:0, pj:2, gf:1,  gc:37}
+      {n:"Juan de Ávila C",           pts:0, pj:3, gf:4,  gc:42}
     ]},
     { g: "E", nota: "Andratx y Calvià, los dos con pleno de victorias, se juegan el grupo entre ellos. El Son Oliva B sacó su primera victoria en un 5-4 ajustado.", equipos: [
       {n:"Racing Club Andratx",       pts:6, pj:2, gf:21, gc:2},
