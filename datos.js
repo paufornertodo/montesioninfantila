@@ -114,11 +114,24 @@ const COMPETICIONES = [
       ]},
       { j: 4, descansa: "Montesión", partidos: [
         { local: "Viva Sports",  visitante: "Juan de Ávila", fecha: "2026-10-17", hora: "14:00", pista: "P.M. Secar de la Real (parquet)", gl: 5, gv: 3 },
-        { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-18", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: null, gv: null }
+        { local: "Inter Campos", visitante: "Son Oliva", fecha: "2026-10-18", hora: "13:00", pista: "Pol. Mun. Campos (sintético)", gl: 2, gv: 7 }
       ]},
       { j: 5, descansa: "Viva Sports", partidos: [
-        { local: "Son Oliva",    visitante: "Montesión", fecha: "2026-10-24", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goleadores: [], porteros: [] },
+        { local: "Son Oliva",    visitante: "Montesión", fecha: "2026-10-24", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: 5, gv: 5,
+          descanso: "", estado: "",
+          goles: [
+            {m:"1-0", tipo:"rival", encaja:"Ángel", nota:"min. 10"},
+            {m:"1-1", n:"Juanito", a:"Tomás",       nota:"min. 21"},
+            {m:"2-1", tipo:"rival", encaja:"Ángel", nota:"min. 21"},
+            {m:"2-2", n:"Tonete",  a:"",            nota:"min. 25"},
+            {m:"2-3", tipo:"pp",                    nota:"en propia puerta de Palomares, min. 28"},
+            {m:"2-4", n:"Pablo",   a:"",            nota:"min. 43"},
+            {m:"3-4", tipo:"rival", encaja:"Ángel", nota:"min. 46"},
+            {m:"4-4", tipo:"rival", encaja:"Ángel", nota:"min. 47"},
+            {m:"5-4", tipo:"rival", encaja:"Ángel", nota:"min. 52"},
+            {m:"5-5", n:"Juanito", a:"",            nota:"min. 53"}
+          ],
+          porteros: [{n:"Ángel", ge:5}] },
         { local: "Juan de Ávila", visitante: "Inter Campos", fecha: "2026-10-25", hora: "10:00", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null }
       ]}
     ]
@@ -142,20 +155,13 @@ const COMPETICIONES = [
 ];
 
 /* Informe del próximo rival (se muestra solo; los resultados y la clasificación salen de COMPETICIONES) */
+/* Informe del próximo rival. Con rival:"" el bloque no se muestra.
+   La fase de clasificación ha terminado; se volverá a llenar cuando haya rival de liga. */
 const INFORME = {
-  rival: "Son Oliva",
-  notas: [
-    "El líder y el único invicto del grupo: 5-1 al Viva Sports y 16-0 al Juan de Ávila.",
-    "21 goles a favor y solo 1 en contra. Ese gol se lo marcó el Viva Sports en la primera jornada.",
-    "Jugamos en su pista, el Son Ferragut, y es el último partido de la fase.",
-    "La FFIB no publica quién marca en esta categoría, así que el acta no da autores."
-  ],
-  goleadores: [],   // [{d:10, n:"Nombre", g:1}] si se sabe
-  plantilla: [      // convocados en la J2 según el acta de la FFIB (dorsal y nombre)
-    {d:1,  n:"Fernando P."}, {d:3,  n:"Adrià C."},  {d:6,  n:"José Daniel C."}, {d:7,  n:"Baltasar G."},
-    {d:10, n:"Noah P."},     {d:11, n:"Samuel C."}, {d:19, n:"Matheo F."},      {d:21, n:"Dani V."},
-    {d:25, n:"Gabriel B."},  {d:80, n:"Xavi A."}
-  ]
+  rival: "",
+  notas: [],
+  goleadores: [],
+  plantilla: []
 };
 
 /* Galería */
@@ -178,9 +184,9 @@ const FOTOS = [
    del grupo. El orden de la lista es el de la clasificación.
    ---------------------------------------------------------- */
 const GRUPOS = {
-  jornada: 4,
-  fecha: "grupo D tras la jornada 4; el resto, tras la 3",
-  nota: "En el grupo D falta por jugarse el Inter Campos – Son Oliva. Los otros seis grupos están disputando su cuarta jornada este fin de semana, así que sus tablas son de la jornada 3. Ojo también con el descanso rotativo: no todos han jugado los mismos partidos.",
+  jornada: 5,
+  fecha: "grupo D terminado; el resto, tras la jornada 3",
+  nota: "Nuestro grupo ya ha cerrado la fase. Los otros seis siguen en juego y sus tablas son de la jornada 3; las actualizo cuando acaben.",
   /* Análisis en prosa. Cada entrada es un párrafo; el titulo es opcional. */
   analisis: [
     { t: "El panorama",
@@ -189,12 +195,14 @@ const GRUPOS = {
       p: "El Bar Gost – Sagrat Cor A del grupo B se ha puesto por delante de todos: tres victorias, 49 goles a favor y 2 en contra, con un 21-1 y un 21-0 seguidos. El Pont d'Inca A del G es el otro con pleno, 35:1 y un 20-1 al Manacor. Detrás, el grupo C sigue siendo un campo de tiro: el Grupo Osa A lleva 35:1, el Juan de Ávila A 28:0 y hasta el Bar Gost B, que es tercero, acaba de ganar 31-0. El Palmanova B de ese grupo ha encajado 83 goles en tres partidos." },
     { t: "Dónde encajamos nosotros",
       p: "Nuestro 29:7 es de los mejores del campeonato, aunque conviene recordar que 21 de esos goles fueron contra el colista, igual que pasa con las cifras infladas de otros grupos. El dato que importa es otro: el grupo D es el más igualado de los siete, con tres equipos empatados a seis puntos. En ningún otro grupo hay tanta pelea arriba." },
-    { t: "Cómo está la pelea",
-      p: "El Viva Sports ya ha acabado su calendario y se ha quedado con nueve puntos. Le costó más de lo esperado: ganó 5-3 al Juan de Ávila C, el colista, y se quedó con un 17:11 que es, de largo, la peor diferencia de goles de los tres de arriba. Nosotros y el Son Oliva seguimos con seis, y los dos tenemos partido pendiente: precisamente el nuestro, el uno contra el otro." },
-    { t: "Las cuentas",
-      p: "No hay vuelta de hoja: hay que ganar el 24 en Son Ferragut. Ganando llegamos a nueve, igualamos al Viva Sports y nuestra diferencia de goles es mucho mejor que la suya, así que la plaza sería nuestra. Empatar no sirve, porque nos quedaríamos en siete. Y perder tampoco, claro. Antes, este domingo, el Son Oliva juega en Campos: si gana se pone a nueve y llega al último partido con todo a favor." },
-    { t: "Los dos del club",
-      p: "El Montesión B sigue en puesto de División de Honor, segundo del grupo F, aunque su partido de la tercera jornada todavía no figura en el acta. El Entreculturas, en cambio, ha perdido 3-5 contra el Son Ferrer B y se ha caído a la tercera plaza del grupo A: ahora mismo se quedaría en Primera Regional." }
+    { t: "Cómo acabó",
+      p: "En un 5-5 de infarto en Son Ferragut. Íbamos 2-4 arriba en el minuto 43 y el Son Oliva metió tres goles en seis minutos para ponerse 5-4. Juanito empató en el 53, pero el empate no nos servía: necesitábamos ganar. El Son Oliva se llevó el grupo con diez puntos, el Viva Sports quedó segundo con nueve y nosotros terceros con siete." },
+    { t: "Lo que nos ha costado la plaza",
+      p: "El partido que pesó fue el 2-5 contra el Viva Sports de la segunda jornada, el único que perdimos. Ellos nos ganaron el cara a cara y acabaron un punto por delante. Por lo demás, los números son buenos: 34 goles a favor, los que más del grupo, y un balance de dos victorias, un empate y una derrota." },
+    { t: "Qué viene ahora",
+      p: "Terceros del grupo D significa Primera Regional, grupo B, que empieza en diciembre. No es lo que se buscaba, pero es una liga en la que el equipo puede competir arriba: con 34 goles en cuatro partidos, este equipo va a dar guerra donde lo pongan." },
+    { t: "Los otros del club",
+      p: "El Montesión B y el Entreculturas todavía no han cerrado su fase. A falta de que la FFIB publique sus últimas jornadas, el B estaba segundo del grupo F, en puesto de División de Honor, y el Entreculturas tercero del A. Los actualizo en cuanto acaben." }
   ],
   lista: [
     { g: "A", nota: "Se ha apretado. El Son Ferrer B encajó un 19-0 en el estreno y desde entonces lleva dos victorias, una de ellas al Entreculturas, al que ha echado de los dos primeros puestos.", equipos: [
@@ -218,12 +226,12 @@ const GRUPOS = {
       {n:"Joves d'Inca A",            pts:0, pj:2, gf:2,  gc:8},
       {n:"Palmanova B",               pts:0, pj:3, gf:0,  gc:83}
     ]},
-    { g: "D", nuestro: true, nota: "El nuestro. El Viva Sports ya ha terminado sus cuatro partidos y manda con nueve puntos, aunque su 5-3 al colista le ha dejado una diferencia de goles pobre. Falta el Inter Campos – Son Oliva.", equipos: [
-      {n:"Viva Sports Masunga",       pts:9, pj:4, gf:17, gc:11},
-      {n:"Colegio Montesión A",       pts:6, pj:3, gf:29, gc:7, nos:true, club:true},
-      {n:"Son Oliva A",               pts:6, pj:2, gf:21, gc:1},
-      {n:"Inter Campos",              pts:0, pj:2, gf:2,  gc:12},
-      {n:"Juan de Ávila C",           pts:0, pj:3, gf:4,  gc:42}
+    { g: "D", nuestro: true, nota: "Fase cerrada. El 5-5 de Son Ferragut dejó al Son Oliva primero y a nosotros terceros, a un punto de la segunda plaza. Fuimos el equipo más goleador del grupo.", equipos: [
+      {n:"Son Oliva A",               pts:10, pj:4, gf:33, gc:8},
+      {n:"Viva Sports Masunga",       pts:9,  pj:4, gf:17, gc:11},
+      {n:"Colegio Montesión A",       pts:7,  pj:4, gf:34, gc:12, nos:true, club:true},
+      {n:"Inter Campos",              pts:0,  pj:3, gf:4,  gc:19},
+      {n:"Juan de Ávila C",           pts:0,  pj:3, gf:4,  gc:42}
     ]},
     { g: "E", nota: "Andratx y Calvià, los dos con pleno de victorias, se juegan el grupo entre ellos. El Son Oliva B sacó su primera victoria en un 5-4 ajustado.", equipos: [
       {n:"Racing Club Andratx",       pts:6, pj:2, gf:21, gc:2},

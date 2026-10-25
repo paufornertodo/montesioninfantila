@@ -313,7 +313,7 @@ nuestros.sort((a,b) => (a.fecha+a.hora).localeCompare(b.fecha+b.hora));
 function golesDe(p){
   if (p.goles && p.goles.length) {
     const t = {};
-    p.goles.filter(x => x.tipo !== "rival").forEach(x => { t[x.n] = (t[x.n]||0) + 1; });
+    p.goles.filter(x => x.tipo !== "rival" && x.tipo !== "pp").forEach(x => { t[x.n] = (t[x.n]||0) + 1; });
     return Object.entries(t).map(([n,g]) => ({n,g}));
   }
   return p.goleadores || [];
@@ -323,7 +323,7 @@ function golesDe(p){
 function asistenciasDe(p){
   if (p.goles && p.goles.length) {
     const t = {};
-    p.goles.filter(x => x.tipo !== "rival" && x.a).forEach(x => { t[x.a] = (t[x.a]||0) + 1; });
+    p.goles.filter(x => x.tipo !== "rival" && x.tipo !== "pp" && x.a).forEach(x => { t[x.a] = (t[x.a]||0) + 1; });
     return Object.entries(t).map(([n,a]) => ({n,a}));
   }
   return p.asistencias || [];
@@ -498,8 +498,11 @@ function cruce(p){
     if (p.porteros && p.porteros.length) partes.push("Portería: " + p.porteros.map(x=>`<b>${esc(nom(x.n))}</b> ${x.ge} enc.`).join(", "));
     if (p.nota) partes.push(`<i>${esc(p.nota)}</i>`);
     if (partes.length) det = `<div class="detalle">${partes.join(" · ")}</div>`;
-    if (p.goles && p.goles.length) det += `<ol class="cronica">${p.goles.map(x => x.tipo === "rival"
-      ? `<li class="riv"><span class="m">${esc(x.m||"")}</span><span>Gol del rival${x.encaja?`<small>encaja ${esc(nom(x.encaja))}</small>`:""}</span></li>`
+    if (p.goles && p.goles.length) det += `<ol class="cronica">${p.goles.map(x =>
+        x.tipo === "rival"
+      ? `<li class="riv"><span class="m">${esc(x.m||"")}</span><span>Gol del rival${x.nota?` <i>${esc(x.nota)}</i>`:""}${x.encaja?`<small>encaja ${esc(nom(x.encaja))}</small>`:""}</span></li>`
+      : x.tipo === "pp"
+      ? `<li><span class="m">${esc(x.m||"")}</span><span><b>Gol en propia puerta</b>${x.nota?`<small>${esc(x.nota)}</small>`:""}</span></li>`
       : `<li><span class="m">${esc(x.m||"")}</span><span><b>${esc(nom(x.n))}</b>${x.nota?` <i>${esc(x.nota)}</i>`:""}${x.a?`<small>asistencia de ${esc(nom(x.a))}</small>`:""}</span></li>`).join("")}</ol>`;
   } else if (!jugado(p) && p.fecha) {
     det = `<div class="detalle">${fechaLarga(p.fecha)}${p.hora?"":" · hora por fijar"}${p.pista?` · ${esc(p.pista)}`:""}</div>`;
