@@ -237,6 +237,7 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
 <nav aria-label="Secciones">
   <ul>
     <li><a href="#rival">Rival</a></li>
+    <li><a href="#grupos">Grupos</a></li>
     <li><a href="#partidos">Partidos</a></li>
     <li><a href="#goleadores">Goleadores</a></li>
     <li><a href="#asistencias">Asistencias</a></li>
@@ -249,8 +250,9 @@ footer{background:var(--noche);color:#BFD6EE;text-align:center;padding:26px 20px
   <section id="rival" hidden>
     <h2>Informe del rival</h2>
     <div id="informe"></div>
-    <div id="grupos"></div>
   </section>
+
+  <section id="grupos" hidden></section>
 
   <section id="partidos">
     <h2>Partidos</h2>
@@ -450,6 +452,7 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
 
   html += `</div>`;
   $("#grupos").innerHTML = html;
+  $("#grupos").hidden = false;
 })();
 
 /* ---------- Resumen de la temporada ---------- */
