@@ -202,7 +202,7 @@ const GRUPOS = {
     { t: "Dónde encajamos nosotros",
       p: "El grupo D ha sido el más igualado de los siete: diez puntos el Son Oliva, nueve el Viva Sports y siete nosotros, los tres primeros en tres puntos. En cuatro de los otros seis grupos el líder terminó con pleno. Y nuestros 34 goles son el mejor registro del grupo y el quinto de todo el campeonato." },
     { t: "Cómo acabó",
-      p: "En un 5-5 de infarto en Son Ferragut. Íbamos 2-4 arriba en el minuto 43 y el Son Oliva metió tres goles en seis minutos para ponerse 5-4. Juanito empató en el 53, pero el empate no nos servía: necesitábamos ganar. El Son Oliva se llevó el grupo con diez puntos, el Viva Sports quedó segundo con nueve y nosotros terceros con siete." },
+      p: "En un 5-5 de infarto en Son Ferragut. Nos pusimos 2-5 en el minuto 46, con los goles de Pablo y Juanito en tres minutos, y el Son Oliva metió tres en los seis últimos (47, 52 y 53) para empatarlo. Y el empate no nos servía: necesitábamos ganar. El Son Oliva se llevó el grupo con diez puntos, el Viva Sports quedó segundo con nueve y nosotros terceros con siete." },
     { t: "Lo que nos ha costado la plaza",
       p: "El partido que pesó fue el 2-5 contra el Viva Sports de la segunda jornada, el único que perdimos. Ellos nos ganaron el cara a cara y acabaron un punto por delante. Por lo demás, los números son buenos: 34 goles a favor, los que más del grupo, y un balance de dos victorias, un empate y una derrota." },
     { t: "Qué viene ahora",
