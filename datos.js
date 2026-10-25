@@ -126,10 +126,10 @@ const COMPETICIONES = [
             {m:"2-2", n:"Tonete",  a:"",            nota:"min. 25"},
             {m:"2-3", tipo:"pp",                    nota:"en propia puerta de Palomares, min. 28"},
             {m:"2-4", n:"Pablo",   a:"",            nota:"min. 43"},
-            {m:"3-4", tipo:"rival", encaja:"Ángel", nota:"min. 46"},
-            {m:"4-4", tipo:"rival", encaja:"Ángel", nota:"min. 47"},
-            {m:"5-4", tipo:"rival", encaja:"Ángel", nota:"min. 52"},
-            {m:"5-5", n:"Juanito", a:"",            nota:"min. 53"}
+            {m:"2-5", n:"Juanito", a:"",            nota:"min. 46"},
+            {m:"3-5", tipo:"rival", encaja:"Ángel", nota:"min. 47"},
+            {m:"4-5", tipo:"rival", encaja:"Ángel", nota:"min. 52"},
+            {m:"5-5", tipo:"rival", encaja:"Ángel", nota:"min. 53"}
           ],
           porteros: [{n:"Ángel", ge:5}] },
         { local: "Juan de Ávila", visitante: "Inter Campos", fecha: "2026-10-25", hora: "10:00", pista: "P.M. Francesc de Borja Moll (goma)", gl: null, gv: null }
