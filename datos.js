@@ -18,7 +18,19 @@ const EQUIPOS = {
   "Inter Campos":  { nombre: "Inter Campos Futbol Sala",       escudo: "inter-campos.png" },
   "Son Oliva":     { nombre: "C.D. Son Oliva F.S. 'A'",        escudo: "son-oliva.png" },
   "Viva Sports":   { nombre: "Viva Sports Masunga del V.S.",   escudo: "viva-sports.png" },
-  "Juan de Ávila": { nombre: "C.S.E. Juan de Ávila \"C\"",           escudo: "juan-de-avila.png" }
+  "Juan de Ávila": { nombre: "C.S.E. Juan de Ávila \"C\"",           escudo: "juan-de-avila.png" },
+  /* Liga Preferente */
+  "Pont d'Inca B":   { nombre: "AD La Salle Pont d'Inca FS \"B\"",   escudo: "" },
+  "Joves d'Inca A":  { nombre: "C.F.S. Joves d'Inca \"A\"",          escudo: "" },
+  "Ciutat d'Inca A": { nombre: "C.E. Ciutat d'Inca Futsal \"A\"",    escudo: "" },
+  "Grupo Osa B":     { nombre: "Urbanitzacions Grupo Osa \"B\"",     escudo: "" },
+  "CD Viva Sports":  { nombre: "Club Deportivo Viva Sports",          escudo: "" },
+  "Palmanova A":     { nombre: "C.E. Palmanova \"A\"",               escudo: "" },
+  "Entreculturas":   { nombre: "Entreculturas Montesión",             escudo: "" },
+  "Sant Joan A":     { nombre: "Sant Joan C.E. \"A\"",               escudo: "" },
+  "Sant Joan B":     { nombre: "Sant Joan C.E. \"B\"",               escudo: "" },
+  "Calvià":          { nombre: "E.T.B. Calvià",                       escudo: "" },
+  "Son Oliva B":     { nombre: "C.D. Son Oliva F.S. \"B\"",          escudo: "son-oliva.png" }
 };
 
 /* Nombres que son la misma persona (se escriben como salga y la web los suma bien) */
@@ -138,11 +150,118 @@ const COMPETICIONES = [
   },
   {
     id: "liga",
-    nombre: "Liga",
-    info: "Empieza al terminar la fase de clasificación. El grupo depende de cómo se acabe.",
+    nombre: "Liga Preferente",
+    info: "Liga Regular Infantil Futsal Mallorca, grupo Preferente. Doce equipos a doble vuelta: 22 jornadas, del 31 de octubre al 2 de mayo. De la jornada 3 en adelante solo está nuestro partido; las fechas lejanas son orientativas hasta que la FFIB fije horarios.",
     tabla: true,
-    equipos: [],
-    jornadas: []
+    ffib: "https://www.ffib.es/Fed/NPcd/NFG_CmpJornada?cod_primaria=1000110&CodCompeticion=23348753&CodGrupo=23348755&CodTemporada=22&cod_agrupacion=&CodJornada=1&Sch_Codigo_Delegacion=&Sch_Tipo_Juego=",
+    equipos: ["Montesión", "Pont d'Inca B", "Joves d'Inca A", "Ciutat d'Inca A", "Grupo Osa B", "CD Viva Sports", "Palmanova A", "Entreculturas", "Sant Joan A", "Sant Joan B", "Calvià", "Son Oliva B"],
+    jornadas: [
+      { j: 1, partidos: [
+        { local: "Sant Joan B",     visitante: "Grupo Osa B",     fecha: "2026-10-31", hora: "12:40", pista: "P.M. Son Juny (goma)", gl: 2, gv: 5 },
+        { local: "Son Oliva B",     visitante: "Joves d'Inca A",  fecha: "2026-10-31", hora: "16:15", pista: "Pab. Son Ferragut (goma)", gl: 1, gv: 10 },
+        { local: "Montesión",       visitante: "Pont d'Inca B",   fecha: "2026-10-31", hora: "18:45", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: 2, gv: 2,
+          descanso: "", estado: "",
+          goles: [
+            {m:"1-0", n:"Bosco",   a:"", nota:"min. 10"},
+            {m:"1-1", tipo:"rival",      nota:"min. 39"},
+            {m:"2-1", n:"Juanito", a:"", nota:"min. 50"},
+            {m:"2-2", tipo:"rival",      nota:"min. 60"}
+          ],
+          porteros: [] },
+        { local: "CD Viva Sports",  visitante: "Entreculturas",   fecha: "2026-11-01", hora: "", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null, nota: "Aplazado" },
+        { local: "Calvià",          visitante: "Ciutat d'Inca A", fecha: "2026-11-01", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: 4, gv: 11 },
+        { local: "Palmanova A",     visitante: "Sant Joan A",     fecha: "2026-11-03", hora: "19:15", pista: "Palmanova (pista exterior)", gl: null, gv: null }
+      ]},
+      { j: 2, partidos: [
+        { local: "Joves d'Inca A",  visitante: "Montesión",       fecha: "2026-11-07", hora: "11:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] },
+        { local: "Pont d'Inca B",   visitante: "CD Viva Sports",  fecha: "2026-11-07", hora: "12:40", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
+        { local: "Sant Joan A",     visitante: "Son Oliva B",     fecha: "2026-11-07", hora: "15:45", pista: "P.M. Son Juny (goma)", gl: null, gv: null },
+        { local: "Grupo Osa B",     visitante: "Calvià",          fecha: "2026-11-08", hora: "", pista: "P.M. S'Arenal (sintético)", gl: null, gv: null },
+        { local: "Entreculturas",   visitante: "Sant Joan B",     fecha: "2026-11-08", hora: "12:45", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null },
+        { local: "Ciutat d'Inca A", visitante: "Palmanova A",     fecha: "2026-11-08", hora: "13:00", pista: "Pol. La Salle Inca (sintético)", gl: null, gv: null }
+      ]},
+      { j: 3, partidos: [
+        { local: "Montesión", visitante: "CD Viva Sports", fecha: "2026-11-15", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 4, partidos: [
+        { local: "Sant Joan A", visitante: "Montesión", fecha: "2026-11-22", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 5, partidos: [
+        { local: "Montesión", visitante: "Sant Joan B", fecha: "2026-11-29", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 6, partidos: [
+        { local: "Ciutat d'Inca A", visitante: "Montesión", fecha: "2026-12-06", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 7, partidos: [
+        { local: "Montesión", visitante: "Calvià", fecha: "2026-12-13", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 8, partidos: [
+        { local: "Grupo Osa B", visitante: "Montesión", fecha: "2026-12-20", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 9, partidos: [
+        { local: "Montesión", visitante: "Palmanova A", fecha: "2027-01-10", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 10, partidos: [
+        { local: "Montesión", visitante: "Entreculturas", fecha: "2027-01-17", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 11, partidos: [
+        { local: "Son Oliva B", visitante: "Montesión", fecha: "2027-01-24", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 12, partidos: [
+        { local: "Pont d'Inca B", visitante: "Montesión", fecha: "2027-02-06", hora: "12:40", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 13, partidos: [
+        { local: "Montesión", visitante: "Joves d'Inca A", fecha: "2027-02-14", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 14, partidos: [
+        { local: "CD Viva Sports", visitante: "Montesión", fecha: "2027-02-21", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 15, partidos: [
+        { local: "Montesión", visitante: "Sant Joan A", fecha: "2027-02-28", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 16, partidos: [
+        { local: "Sant Joan B", visitante: "Montesión", fecha: "2027-03-07", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 17, partidos: [
+        { local: "Montesión", visitante: "Ciutat d'Inca A", fecha: "2027-03-14", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 18, partidos: [
+        { local: "Calvià", visitante: "Montesión", fecha: "2027-03-21", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 19, partidos: [
+        { local: "Montesión", visitante: "Grupo Osa B", fecha: "2027-04-04", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 20, partidos: [
+        { local: "Palmanova A", visitante: "Montesión", fecha: "2027-04-10", hora: "18:00", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 21, partidos: [
+        { local: "Entreculturas", visitante: "Montesión", fecha: "2027-04-18", hora: "", pista: "", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]},
+      { j: 22, partidos: [
+        { local: "Montesión", visitante: "Son Oliva B", fecha: "2027-05-02", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] }
+      ]}
+    ]
   },
   {
     id: "copa",
@@ -154,13 +273,26 @@ const COMPETICIONES = [
   }
 ];
 
-/* Informe del próximo rival (se muestra solo; los resultados y la clasificación salen de COMPETICIONES) */
 /* Informe del próximo rival. Con rival:"" el bloque no se muestra.
-   La fase de clasificación ha terminado; se volverá a llenar cuando haya rival de liga. */
+   Resultados y puesto salen solos de COMPETICIONES; goleadores y notas, de las actas de la FFIB. */
 const INFORME = {
-  rival: "",
-  notas: [],
-  goleadores: [],
+  rival: "Joves d'Inca A",
+  goleadoresTitulo: "Sus goleadores esta temporada (fase de clasificación + liga)",
+  goleadores: [
+    {d:17, n:"Sergi C.",   g:11},
+    {d:26, n:"Eric M.",    g:8},
+    {d:6,  n:"Joana M.",   g:4},
+    {d:2,  n:"Tiziano F.", g:3},
+    {d:3,  n:"Nicolau G.", g:3},
+    {d:19, n:"Lluc G.",    g:1}
+  ],
+  notas: [
+    "Son los vigentes campeones de esta liga: ganaron la Preferente la temporada pasada con 60 puntos.",
+    "Han empezado como líderes: 1-10 en la pista del Son Oliva B, con tres goles de Sergi C. (17) y tres de Eric M. (26), y ya ganaban 0-9 en el minuto 48.",
+    "En la fase de clasificación quedaron cuartos del grupo C con 3 puntos y 21:12: perdieron 2-1 con el Bar Gost Sagrat Cor B, 6-1 con el Grupo Osa A y 2-3 con el Juan de Ávila A, y ganaron 1-17 en Palmanova.",
+    "Llevan 31 goles en 5 partidos y casi dos de cada tres son de dos jugadores: Sergi C. (11) y Eric M. (8). Ojo también a Joana M. (6), que marcó dos en Son Ferragut.",
+    "Jugamos en su casa, el Pab. Mun. Sa Creu, con pista sintética: más lenta que la goma de San Pedro Claver."
+  ],
   plantilla: []
 };
 
@@ -206,7 +338,7 @@ const GRUPOS = {
     { t: "Lo que nos ha costado la plaza",
       p: "El partido que pesó fue el 2-5 contra el Viva Sports de la segunda jornada, el único que perdimos. Ellos nos ganaron el cara a cara y acabaron un punto por delante. Por lo demás, los números son buenos: 34 goles a favor, los que más del grupo, y un balance de dos victorias, un empate y una derrota." },
     { t: "Qué viene ahora",
-      p: "Terceros del grupo D significa Primera Regional, grupo B, que empieza en diciembre. No es lo que se buscaba, pero es una liga en la que el equipo puede competir arriba: con 34 goles en cuatro partidos, este equipo va a dar guerra donde lo pongan." },
+      p: "La liga Preferente, que arrancó el 31 de octubre: doce equipos a doble vuelta, 22 jornadas hasta mayo. Debutamos con un 2-2 contra el Pont d'Inca B en San Pedro Claver. Todo lo de la liga está en su bloque, más arriba." },
     { t: "Los otros del club",
       p: "Los tres equipos del club acaban terceros de su grupo, así que los tres se van a Primera Regional grupo B. El Montesión B llegaba a la última jornada segundo del F, en puesto de División de Honor, y el 14-0 en Manacor lo dejó fuera por diferencia de goles. El Entreculturas cerró el grupo A tercero tras el 0-15 contra el Alcúdia A; para recuperar la segunda plaza necesitaría que el Sant Joan A ganara el partido que le queda al Son Ferrer B y, aun así, salir bien de un triple empate a seis puntos." }
   ],

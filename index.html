@@ -177,6 +177,9 @@ td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .dorsales{display:flex;flex-wrap:wrap;gap:6px}
 .dorsales span{background:var(--azul-claro);border-radius:999px;padding:3px 10px;font-size:.88rem}
 .dorsales b{font-family:var(--display);font-weight:800;margin-right:4px}
+.sin-escudo{display:inline-grid;place-items:center;width:28px;height:24px;border-radius:50%;background:var(--azul-claro);color:var(--gris);font-family:var(--display);font-weight:800;font-size:.85rem;flex:none}
+.eq .sin-escudo{width:70px;height:70px;font-size:2rem}
+.informe h3 .sin-escudo{width:40px;height:40px;font-size:1.2rem}
 
 .ffib{margin-top:24px;border-top:2px solid var(--azul-claro);padding-top:16px}
 .ffib a.btn{display:inline-block;background:var(--noche);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:6px 14px;font-size:.9rem}
@@ -297,6 +300,7 @@ const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 const nom = n => NOMBRES[n] || n;
 const eqNombre = k => (EQUIPOS[k] && EQUIPOS[k].nombre) || k;
 const eqEscudo = k => (EQUIPOS[k] && EQUIPOS[k].escudo) || "";
+const escImg = k => eqEscudo(k) ? `<img src="${eqEscudo(k)}" alt="">` : `<span class="sin-escudo" aria-hidden="true">${esc(String(k).charAt(0))}</span>`;
 const jugado = p => p.gl !== null && p.gl !== undefined && p.gv !== null && p.gv !== undefined;
 const esNuestro = p => p.local === EQUIPO.id || p.visitante === EQUIPO.id;
 const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
@@ -358,7 +362,7 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
     top = `<span>${esc(p.compNombre)}</span><span>Jornada ${p.j}</span>`;
     centro = `${p.hora ? `<div class="hora">${esc(p.hora)}</div>` : `<div class="hora" style="font-size:1.4rem">Hora por fijar</div>`}<div class="fecha">${fechaLarga(p.fecha)}</div>${cuenta ? `<div class="cuenta">${cuenta}</div>` : ""}`;
   }
-  const lado = k => `<div class="eq ${k===EQUIPO.id?'nos':''}"><img src="${eqEscudo(k)}" alt="">${esc(eqNombre(k))}</div>`;
+  const lado = k => `<div class="eq ${k===EQUIPO.id?'nos':''}">${escImg(k)}${esc(eqNombre(k))}</div>`;
   $("#proximo").innerHTML = `<div class="marcador"><div class="marcador-top">${top}</div>${vivo?"":`<p class="prox-t">Próximo partido</p>`}
     <div class="duelo">${lado(p.local)}<div class="centro">${centro}</div>${lado(p.visitante)}</div>${p.pista?`<p class="pista">📍 ${esc(p.pista)}</p>`:""}</div>`;
 })();
@@ -379,7 +383,7 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
   const comp = suyos.length ? suyos[suyos.length-1].comp : null;
   if (comp && comp.tabla) { const i = clasificacion(comp).findIndex(r => r.k === k); if (i >= 0) puesto = `${i+1}.º`; }
   const u = suyos[suyos.length-1];
-  let html = `<div class="informe"><h3><img src="${eqEscudo(k)}" alt="">${esc(eqNombre(k))}</h3>`;
+  let html = `<div class="informe"><h3>${escImg(k)}${esc(eqNombre(k))}</h3>`;
   if (prox) html += `<p class="nota" style="margin:6px 0 0">Nuestro próximo rival · ${fechaLarga(prox.fecha)}${prox.hora?` a las ${esc(prox.hora)}`:""}</p>`;
   if (u) {
     const a = u.local===k ? u.gl : u.gv, b = u.local===k ? u.gv : u.gl;
@@ -389,7 +393,7 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
   const t = [[suyos.length,"Jugados"],[g,"Ganados"],[e,"Empatados"],[pd,"Perdidos"],[`${gf}:${gc}`,"Goles"],[puesto,"Puesto"]];
   html += `<div class="resumen">${t.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>`;
   if (INFORME.goleadores && INFORME.goleadores.length) {
-    html += `<h4>Goleadores</h4><div class="dorsales">${INFORME.goleadores.map(x=>`<span><b>${x.d}</b>${esc(x.n)}${x.g>1?` (${x.g})`:""}</span>`).join("")}</div>`;
+    html += `<h4>${esc(INFORME.goleadoresTitulo||"Goleadores")}</h4><div class="dorsales">${INFORME.goleadores.map(x=>`<span><b>${x.d}</b>${esc(x.n)}${x.g>1?` (${x.g})`:""}</span>`).join("")}</div>`;
   }
   if (INFORME.plantilla && INFORME.plantilla.length) {
     html += `<h4>Convocados en su último partido</h4><div class="dorsales">${INFORME.plantilla.map(x=>`<span><b>${x.d}</b>${esc(x.n)}</span>`).join("")}</div>`;
@@ -508,7 +512,7 @@ function cruce(p){
       ? `<li><span class="m">${esc(x.m||"")}</span><span><b>Gol en propia puerta</b>${x.nota?`<small>${esc(x.nota)}</small>`:""}</span></li>`
       : `<li><span class="m">${esc(x.m||"")}</span><span><b>${esc(nom(x.n))}</b>${x.nota?` <i>${esc(x.nota)}</i>`:""}${x.a?`<small>asistencia de ${esc(nom(x.a))}</small>`:""}</span></li>`).join("")}</ol>`;
   } else if (!jugado(p) && p.fecha) {
-    det = `<div class="detalle">${fechaLarga(p.fecha)}${p.hora?"":" · hora por fijar"}${p.pista?` · ${esc(p.pista)}`:""}</div>`;
+    det = `<div class="detalle">${p.nota?`<b>${esc(p.nota)}</b> · `:""}${fechaLarga(p.fecha)}${p.hora||p.nota?"":" · hora por fijar"}${p.pista?` · ${esc(p.pista)}`:""}</div>`;
   }
   return `<div class="${cls}"><div class="l">${esc(p.local)}</div>${r}<div>${esc(p.visitante)}</div>${det}</div>`;
 }
@@ -521,7 +525,7 @@ function cruce(p){
     let cuerpo = `<p class="nota">${esc(c.info)}</p>`;
     if (hay && c.tabla && c.equipos.length) {
       const filas = clasificacion(c).map((r,n)=>`<tr class="${r.k===EQUIPO.id?'nos':''}">
-        <td>${n+1}</td><td class="eqc"><span class="e"><img src="${eqEscudo(r.k)}" alt="">${esc(r.k)}</span></td>
+        <td>${n+1}</td><td class="eqc"><span class="e">${escImg(r.k)}${esc(r.k)}</span></td>
         <td>${r.pj}</td><td>${r.g}</td><td>${r.e}</td><td>${r.p}</td><td>${r.gf}:${r.gc}</td><td class="pts">${r.pts}</td></tr>`).join("");
       cuerpo += `<div class="tabla-wrap"><table><thead><tr><th>#</th><th class="eqc">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Goles</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table></div>`;
     }
