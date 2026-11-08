@@ -173,8 +173,15 @@ const COMPETICIONES = [
         { local: "Palmanova A",     visitante: "Sant Joan A",     fecha: "2026-11-03", hora: "19:15", pista: "Palmanova (pista exterior)", gl: null, gv: null }
       ]},
       { j: 2, partidos: [
-        { local: "Joves d'Inca A",  visitante: "Montesión",       fecha: "2026-11-07", hora: "11:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null,
-          descanso: "", estado: "", goles: [], porteros: [] },
+        { local: "Joves d'Inca A",  visitante: "Montesión",       fecha: "2026-11-07", hora: "11:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: 2, gv: 2,
+          descanso: "1-2", estado: "",
+          goles: [
+            {m:"0-1", n:"Ripoll", a:""},
+            {m:"1-1", tipo:"rival"},
+            {m:"1-2", n:"Nacho",  a:""},
+            {m:"2-2", tipo:"rival"}
+          ],
+          porteros: [] },
         { local: "Pont d'Inca B",   visitante: "CD Viva Sports",  fecha: "2026-11-07", hora: "12:40", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
         { local: "Sant Joan A",     visitante: "Son Oliva B",     fecha: "2026-11-07", hora: "15:45", pista: "P.M. Son Juny (goma)", gl: null, gv: null },
         { local: "Grupo Osa B",     visitante: "Calvià",          fecha: "2026-11-08", hora: "", pista: "P.M. S'Arenal (sintético)", gl: null, gv: null },
