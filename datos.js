@@ -196,10 +196,10 @@ const COMPETICIONES = [
           goles: [
             {m:"1-0", n:"Juanito", a:"Jaime", nota:"min. 4"},
             {m:"2-0", n:"Jaime",   a:"",      nota:"jugada individual · min. 31"},
-            {m:"2-1", tipo:"rival",           nota:"min. 32"},
-            {m:"2-2", tipo:"rival",           nota:"min. 41"},
-            {m:"2-3", tipo:"rival",           nota:"min. 45"},
-            {m:"2-4", tipo:"rival",           nota:"min. 57"}
+            {m:"2-1", tipo:"rival", encaja:"Ángel", nota:"min. 32"},
+            {m:"2-2", tipo:"rival", encaja:"Ángel", nota:"min. 41"},
+            {m:"2-3", tipo:"rival", encaja:"Ángel", nota:"min. 45"},
+            {m:"2-4", tipo:"rival", encaja:"Santi", nota:"min. 57"}
           ],
           porteros: [{n:"Ángel", ge:3}, {n:"Santi", ge:1}] },
         { local: "Joves d'Inca A",  visitante: "Sant Joan A",     fecha: "2026-11-14", hora: "10:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null },
