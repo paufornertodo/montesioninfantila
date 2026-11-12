@@ -391,7 +391,7 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
     html += `<div class="ult">Último partido: ${esc(u.local)} ${u.gl}-${u.gv} ${esc(u.visitante)}<span>${r} · ${fechaLarga(u.fecha)} · ${u.local===k?"en casa":"fuera"}</span></div>`;
   }
   const t = [[suyos.length,"Jugados"],[g,"Ganados"],[e,"Empatados"],[pd,"Perdidos"],[`${gf}:${gc}`,"Goles"],[puesto,"Puesto"]];
-  html += `<div class="resumen">${t.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>`;
+  if (suyos.length) html += `<div class="resumen">${t.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>`;
   if (INFORME.goleadores && INFORME.goleadores.length) {
     html += `<h4>${esc(INFORME.goleadoresTitulo||"Goleadores")}</h4><div class="dorsales">${INFORME.goleadores.map(x=>`<span><b>${x.d}</b>${esc(x.n)}${x.g>1?` (${x.g})`:""}</span>`).join("")}</div>`;
   }

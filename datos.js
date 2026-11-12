@@ -284,22 +284,15 @@ const COMPETICIONES = [
 /* Informe del próximo rival. Con rival:"" el bloque no se muestra.
    Resultados y puesto salen solos de COMPETICIONES; goleadores y notas, de las actas de la FFIB. */
 const INFORME = {
-  rival: "Joves d'Inca A",
-  goleadoresTitulo: "Sus goleadores esta temporada (fase de clasificación + liga)",
-  goleadores: [
-    {d:17, n:"Sergi C.",   g:11},
-    {d:26, n:"Eric M.",    g:8},
-    {d:6,  n:"Joana M.",   g:4},
-    {d:2,  n:"Tiziano F.", g:3},
-    {d:3,  n:"Nicolau G.", g:3},
-    {d:19, n:"Lluc G.",    g:1}
-  ],
+  rival: "CD Viva Sports",
+  goleadoresTitulo: "Sus goleadores",
+  goleadores: [],
   notas: [
-    "Son los vigentes campeones de esta liga: ganaron la Preferente la temporada pasada con 60 puntos.",
-    "Han empezado como líderes: 1-10 en la pista del Son Oliva B, con tres goles de Sergi C. (17) y tres de Eric M. (26), y ya ganaban 0-9 en el minuto 48.",
-    "En la fase de clasificación quedaron cuartos del grupo C con 3 puntos y 21:12: perdieron 2-1 con el Bar Gost Sagrat Cor B, 6-1 con el Grupo Osa A y 2-3 con el Juan de Ávila A, y ganaron 1-17 en Palmanova.",
-    "Llevan 31 goles en 5 partidos y casi dos de cada tres son de dos jugadores: Sergi C. (11) y Eric M. (8). Ojo también a Joana M. (6), que marcó dos en Son Ferragut.",
-    "Jugamos en su casa, el Pab. Mun. Sa Creu, con pista sintética: más lenta que la goma de San Pedro Claver."
+    "Es el Club Deportivo Viva Sports, no el Viva Sports Masunga de nuestra fase de clasificación: son equipos distintos del mismo club.",
+    "Llegan a la liga desde el grupo B de la fase de clasificación, donde fueron quintos: 0 puntos en 4 partidos, con 4 goles a favor y 50 en contra. Es el grupo del Bar Gost – Sagrat Cor A, el más goleador del campeonato (66:5).",
+    "Dos de los equipos que les ganaron en ese grupo están ahora en nuestra liga: el Palmanova A (tercero, 21:38) y el Grupo Osa B (cuarto, 10:37).",
+    "En liga aún no han jugado en casa: su partido de la jornada 1 contra el Entreculturas se aplazó. En la jornada 2 jugaban en la pista del Pont d'Inca B, el equipo con el que empatamos 2-2 en la primera jornada.",
+    "Pendiente de completar con la FFIB: su resultado de la J2, sus goleadores y la hora del partido."
   ],
   plantilla: []
 };
