@@ -201,7 +201,7 @@ const COMPETICIONES = [
             {m:"2-3", tipo:"rival",           nota:"min. 45"},
             {m:"2-4", tipo:"rival",           nota:"min. 57"}
           ],
-          porteros: [] },
+          porteros: [{n:"Ángel", ge:3}, {n:"Santi", ge:1}] },
         { local: "Joves d'Inca A",  visitante: "Sant Joan A",     fecha: "2026-11-14", hora: "10:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null },
         { local: "Palmanova A",     visitante: "Grupo Osa B",     fecha: "2026-11-14", hora: "16:00", pista: "Palmanova (pista exterior)", gl: null, gv: null },
         { local: "Calvià",          visitante: "Entreculturas",   fecha: "2026-11-14", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: null, gv: null },
