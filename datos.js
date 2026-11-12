@@ -155,6 +155,7 @@ const COMPETICIONES = [
     info: "Liga Regular Infantil Futsal Mallorca, grupo Preferente. Doce equipos a doble vuelta: 22 jornadas, del 31 de octubre al 2 de mayo. De la jornada 3 en adelante solo está nuestro partido; las fechas lejanas son orientativas hasta que la FFIB fije horarios.",
     tabla: true,
     ffib: "https://www.ffib.es/Fed/NPcd/NFG_CmpJornada?cod_primaria=1000110&CodCompeticion=23348753&CodGrupo=23348755&CodTemporada=22&cod_agrupacion=&CodJornada=1&Sch_Codigo_Delegacion=&Sch_Tipo_Juego=",
+    descuentos: { "Palmanova A": 3 },   // puntos restados por la FFIB (sanción)
     equipos: ["Montesión", "Pont d'Inca B", "Joves d'Inca A", "Ciutat d'Inca A", "Grupo Osa B", "CD Viva Sports", "Palmanova A", "Entreculturas", "Sant Joan A", "Sant Joan B", "Calvià", "Son Oliva B"],
     jornadas: [
       { j: 1, partidos: [
@@ -169,9 +170,9 @@ const COMPETICIONES = [
             {m:"2-2", tipo:"rival",      nota:"min. 60"}
           ],
           porteros: [] },
-        { local: "CD Viva Sports",  visitante: "Entreculturas",   fecha: "2026-11-01", hora: "", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null, nota: "Aplazado" },
+        { local: "CD Viva Sports",  visitante: "Entreculturas",   fecha: "2026-11-16", hora: "19:20", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null, nota: "Aplazado del 1/11" },
         { local: "Calvià",          visitante: "Ciutat d'Inca A", fecha: "2026-11-01", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: 4, gv: 11 },
-        { local: "Palmanova A",     visitante: "Sant Joan A",     fecha: "2026-11-03", hora: "19:15", pista: "Palmanova (pista exterior)", gl: null, gv: null }
+        { local: "Palmanova A",     visitante: "Sant Joan A",     fecha: "2026-11-03", hora: "19:15", pista: "Palmanova (pista exterior)", gl: null, gv: null, nota: "Suspendido" }
       ]},
       { j: 2, partidos: [
         { local: "Joves d'Inca A",  visitante: "Montesión",       fecha: "2026-11-07", hora: "11:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: 2, gv: 2,
@@ -183,15 +184,20 @@ const COMPETICIONES = [
             {m:"2-2", tipo:"rival", encaja:"Ángel"}
           ],
           porteros: [{n:"Ángel", ge:2}] },
-        { local: "Pont d'Inca B",   visitante: "CD Viva Sports",  fecha: "2026-11-07", hora: "12:40", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
-        { local: "Sant Joan A",     visitante: "Son Oliva B",     fecha: "2026-11-07", hora: "15:45", pista: "P.M. Son Juny (goma)", gl: null, gv: null },
-        { local: "Grupo Osa B",     visitante: "Calvià",          fecha: "2026-11-08", hora: "", pista: "P.M. S'Arenal (sintético)", gl: null, gv: null },
-        { local: "Entreculturas",   visitante: "Sant Joan B",     fecha: "2026-11-08", hora: "12:45", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null },
-        { local: "Ciutat d'Inca A", visitante: "Palmanova A",     fecha: "2026-11-08", hora: "13:00", pista: "Pol. La Salle Inca (sintético)", gl: null, gv: null }
+        { local: "Pont d'Inca B",   visitante: "CD Viva Sports",  fecha: "2026-11-07", hora: "12:00", pista: "P.M. La Salle Pont d'Inca (goma)", gl: 4, gv: 7 },
+        { local: "Sant Joan A",     visitante: "Son Oliva B",     fecha: "2026-11-07", hora: "15:45", pista: "P.M. Son Juny (goma)", gl: 4, gv: 1 },
+        { local: "Grupo Osa B",     visitante: "Calvià",          fecha: "2026-11-06", hora: "20:00", pista: "P.M. S'Arenal (sintético)", gl: 5, gv: 7 },
+        { local: "Entreculturas",   visitante: "Sant Joan B",     fecha: "2026-11-08", hora: "12:45", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: 6, gv: 3 },
+        { local: "Ciutat d'Inca A", visitante: "Palmanova A",     fecha: "2026-11-08", hora: "13:00", pista: "Pol. La Salle Inca (sintético)", gl: 3, gv: 0 }
       ]},
       { j: 3, partidos: [
-        { local: "Montesión", visitante: "CD Viva Sports", fecha: "2026-11-15", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goles: [], porteros: [] }
+        { local: "Montesión",       visitante: "CD Viva Sports",  fecha: "2026-11-12", hora: "18:15", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] },
+        { local: "Joves d'Inca A",  visitante: "Sant Joan A",     fecha: "2026-11-14", hora: "10:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null },
+        { local: "Palmanova A",     visitante: "Grupo Osa B",     fecha: "2026-11-14", hora: "16:00", pista: "Palmanova (pista exterior)", gl: null, gv: null },
+        { local: "Calvià",          visitante: "Entreculturas",   fecha: "2026-11-14", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: null, gv: null },
+        { local: "Son Oliva B",     visitante: "Ciutat d'Inca A", fecha: "2026-11-14", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
+        { local: "Sant Joan B",     visitante: "Pont d'Inca B",   fecha: "2026-11-15", hora: "11:45", pista: "P.M. Son Juny (goma)", gl: null, gv: null }
       ]},
       { j: 4, partidos: [
         { local: "Sant Joan A", visitante: "Montesión", fecha: "2026-11-22", hora: "", pista: "", gl: null, gv: null,
@@ -285,14 +291,22 @@ const COMPETICIONES = [
    Resultados y puesto salen solos de COMPETICIONES; goleadores y notas, de las actas de la FFIB. */
 const INFORME = {
   rival: "CD Viva Sports",
-  goleadoresTitulo: "Sus goleadores",
-  goleadores: [],
+  goleadoresTitulo: "Sus goleadores esta temporada (fase de clasificación + liga)",
+  goleadores: [
+    {d:10, n:"Asier E.",  g:3},
+    {d:7,  n:"Hugo A.",   g:2},
+    {d:6,  n:"Ángel M.",  g:1},
+    {d:11, n:"Aitor S.",  g:1},
+    {d:21, n:"Judit I.",  g:1},
+    {d:5,  n:"Sergi T.",  g:1},
+    {d:17, n:"Dylan C.",  g:1}
+  ],
   notas: [
-    "Es el Club Deportivo Viva Sports, no el Viva Sports Masunga de nuestra fase de clasificación: son equipos distintos del mismo club.",
-    "Llegan a la liga desde el grupo B de la fase de clasificación, donde fueron quintos: 0 puntos en 4 partidos, con 4 goles a favor y 50 en contra. Es el grupo del Bar Gost – Sagrat Cor A, el más goleador del campeonato (66:5).",
-    "Dos de los equipos que les ganaron en ese grupo están ahora en nuestra liga: el Palmanova A (tercero, 21:38) y el Grupo Osa B (cuarto, 10:37).",
-    "En liga aún no han jugado en casa: su partido de la jornada 1 contra el Entreculturas se aplazó. En la jornada 2 jugaban en la pista del Pont d'Inca B, el equipo con el que empatamos 2-2 en la primera jornada.",
-    "Pendiente de completar con la FFIB: su resultado de la J2, sus goleadores y la hora del partido."
+    "Ojo, que el partido se ha adelantado: la FFIB lo ha puesto el jueves 12 a las 18:15 en San Pedro Claver.",
+    "Vienen de remontar en la pista del Pont d'Inca B, el equipo con el que empatamos en la J1: perdían 2-0 en el minuto 16 y acabaron ganando 4-7. Asier E. (10) marcó tres, dos en los últimos quince minutos.",
+    "Varios de sus goleadores en liga (Asier E., Aitor S., Ángel M., Hugo A.) jugaban con el Viva Sports Masunga en nuestra fase de clasificación, así que el equipo de liga no se parece al que acabó quinto en el grupo B.",
+    "En esa fase (grupo B) hicieron 0 puntos con 4:50: perdieron 0-21 con el Bar Gost – Sagrat Cor A y también con el Palmanova A y el Grupo Osa B, que ahora están en nuestra liga.",
+    "Su partido de la J1 contra el Entreculturas se aplazó al lunes 16, así que llegan con un solo partido de liga."
   ],
   plantilla: []
 };

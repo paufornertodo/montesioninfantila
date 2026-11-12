@@ -481,6 +481,7 @@ function clasificacion(c){
       if (a>b){r.g++;r.pts+=3} else if (a<b){r.p++} else {r.e++;r.pts+=1}
     });
   }));
+  Object.entries(c.descuentos||{}).forEach(([k,n]) => { if (T[k]) { T[k].pts -= n; T[k].desc = n; } });
   return Object.values(T).sort((a,b)=> b.pts-a.pts || (b.gf-b.gc)-(a.gf-a.gc) || b.gf-a.gf || eqNombre(a.k).localeCompare(eqNombre(b.k)));
 }
 
