@@ -170,7 +170,7 @@ const COMPETICIONES = [
             {m:"2-2", tipo:"rival",      nota:"min. 60"}
           ],
           porteros: [] },
-        { local: "CD Viva Sports",  visitante: "Entreculturas",   fecha: "2026-11-16", hora: "19:20", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null, nota: "Aplazado del 1/11" },
+        { local: "CD Viva Sports",  visitante: "Entreculturas",   fecha: "2026-11-16", hora: "19:20", pista: "P.M. Secar de la Real (parquet)", gl: 6, gv: 1, nota: "Aplazado del 1/11" },
         { local: "Calvià",          visitante: "Ciutat d'Inca A", fecha: "2026-11-01", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: 4, gv: 11 },
         { local: "Palmanova A",     visitante: "Sant Joan A",     fecha: "2026-11-03", hora: "19:15", pista: "Palmanova (pista exterior)", gl: null, gv: null, nota: "Suspendido" }
       ]},
@@ -202,24 +202,29 @@ const COMPETICIONES = [
             {m:"2-4", tipo:"rival", encaja:"Santi", nota:"min. 57"}
           ],
           porteros: [{n:"Ángel", ge:3}, {n:"Santi", ge:1}] },
-        { local: "Joves d'Inca A",  visitante: "Sant Joan A",     fecha: "2026-11-14", hora: "10:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null },
-        { local: "Palmanova A",     visitante: "Grupo Osa B",     fecha: "2026-11-14", hora: "16:00", pista: "Palmanova (pista exterior)", gl: null, gv: null },
-        { local: "Calvià",          visitante: "Entreculturas",   fecha: "2026-11-14", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: null, gv: null },
-        { local: "Son Oliva B",     visitante: "Ciutat d'Inca A", fecha: "2026-11-14", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
-        { local: "Sant Joan B",     visitante: "Pont d'Inca B",   fecha: "2026-11-15", hora: "11:45", pista: "P.M. Son Juny (goma)", gl: null, gv: null }
+        { local: "Joves d'Inca A",  visitante: "Sant Joan A",     fecha: "2026-11-14", hora: "10:00", pista: "Pab. Mun. Sa Creu (sintético)", gl: 6, gv: 1 },
+        { local: "Palmanova A",     visitante: "Grupo Osa B",     fecha: "2026-11-14", hora: "16:00", pista: "Palmanova (pista exterior)", gl: 7, gv: 6 },
+        { local: "Calvià",          visitante: "Entreculturas",   fecha: "2026-11-14", hora: "17:30", pista: "P.M. Galatzo (sintético)", gl: 4, gv: 4 },
+        { local: "Son Oliva B",     visitante: "Ciutat d'Inca A", fecha: "2026-11-14", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: 3, gv: 4 },
+        { local: "Sant Joan B",     visitante: "Pont d'Inca B",   fecha: "2026-11-15", hora: "11:45", pista: "P.M. Son Juny (goma)", gl: 1, gv: 6 }
       ]},
       { j: 4, partidos: [
-        { local: "Pont d'Inca B",   visitante: "Calvià",          fecha: "2026-11-21", hora: "12:40", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
+        { local: "Pont d'Inca B",   visitante: "Calvià",          fecha: "2026-11-21", hora: "13:00", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
         { local: "Grupo Osa B",     visitante: "Son Oliva B",     fecha: "2026-11-21", hora: "17:00", pista: "P.M. S'Arenal (sintético)", gl: null, gv: null },
         { local: "Entreculturas",   visitante: "Palmanova A",     fecha: "2026-11-21", hora: "18:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null },
-        { local: "Sant Joan A",     visitante: "Montesión",       fecha: "2026-11-22", hora: "", pista: "P.M. Son Juny (goma)", gl: null, gv: null,
+        { local: "Sant Joan A",     visitante: "Montesión",       fecha: "2026-11-22", hora: "12:00", pista: "P.M. Son Juny (goma)", gl: null, gv: null,
           descanso: "", estado: "", goles: [], porteros: [] },
-        { local: "Ciutat d'Inca A", visitante: "Joves d'Inca A",  fecha: "2026-11-22", hora: "", pista: "Pol. La Salle Inca (sintético)", gl: null, gv: null },
-        { local: "CD Viva Sports",  visitante: "Sant Joan B",     fecha: "2026-11-22", hora: "", pista: "P.M. Secar de la Real (parquet)", gl: null, gv: null }
+        { local: "Ciutat d'Inca A", visitante: "Joves d'Inca A",  fecha: "2026-11-22", hora: "11:30", pista: "Pol. La Salle Inca (sintético)", gl: null, gv: null },
+        { local: "CD Viva Sports",  visitante: "Sant Joan B",     fecha: "2026-11-21", hora: "10:30", pista: "P.M. Secar de la Real (parquet)", gl: 6, gv: 3 }
       ]},
       { j: 5, partidos: [
-        { local: "Montesión", visitante: "Sant Joan B", fecha: "2026-11-29", hora: "", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goles: [], porteros: [] }
+        { local: "Palmanova A",     visitante: "Pont d'Inca B",   fecha: "2026-11-27", hora: "20:45", pista: "Palmanova (pista exterior)", gl: null, gv: null },
+        { local: "Montesión",       visitante: "Sant Joan B",     fecha: "2026-11-28", hora: "11:15", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
+          descanso: "", estado: "", goles: [], porteros: [] },
+        { local: "Son Oliva B",     visitante: "Entreculturas",   fecha: "2026-11-28", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
+        { local: "Joves d'Inca A",  visitante: "Grupo Osa B",     fecha: "2026-11-28", hora: "18:15", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null },
+        { local: "Sant Joan A",     visitante: "Ciutat d'Inca A", fecha: "2026-11-29", hora: "12:00", pista: "P.M. Son Juny (goma)", gl: null, gv: null },
+        { local: "Calvià",          visitante: "CD Viva Sports",  fecha: "2026-11-29", hora: "17:00", pista: "P.M. Galatzo (sintético)", gl: null, gv: null }
       ]},
       { j: 6, partidos: [
         { local: "Ciutat d'Inca A", visitante: "Montesión", fecha: "2026-12-06", hora: "", pista: "", gl: null, gv: null,
@@ -310,16 +315,17 @@ const INFORME = {
     {d:11, n:"Biel M.",    g:4},
     {d:3,  n:"Roc G.",     g:2},
     {d:15, n:"Mohamed F.", g:1},
-    {d:7,  n:"Miquel A.",  g:1},
+    {d:7,  n:"Miquel A.",  g:2},
     {d:8,  n:"Miquel B.",  g:1},
     {d:6,  n:"Pau V.",     g:1}
   ],
   notas: [
-    "Jugamos en su pista, el P.M. Son Juny (goma), el domingo 22. La FFIB aún no ha puesto la hora.",
+    "Domingo 22 a las 12:00 en su pista, el P.M. Son Juny (goma).",
+    "Vienen de perder 6-1 en la pista del Joves d'Inca A, el mismo equipo con el que empatamos 2-2. Aguantaron el 1-1 hasta el minuto 20, con gol de Miquel A. (7), y en la segunda parte se les escapó.",
+    "En liga llevan un partido ganado (4-1 al Son Oliva B) y uno perdido. Su partido de la J1 en Palmanova se suspendió. Están 8.º con 3 puntos, uno más que nosotros.",
     "La temporada pasada fueron quintos en esta misma liga Preferente, con 38 puntos.",
-    "En liga solo han jugado un partido: ganaron 4-1 al Son Oliva B. Su partido de la J1 en Palmanova se suspendió, y este sábado 14 juegan en la pista del Joves d'Inca A, el líder, con el que empatamos 2-2.",
     "En la fase de clasificación fueron cuartos del grupo A: 3 puntos y 7:14. Perdieron 1-6 con el Alcúdia A, 1-2 con el Entreculturas y 5-2 con el Son Ferrer B, y ganaron 1-3 en la pista del Ciutat d'Inca B.",
-    "Su referencia es Biel M. (11), con 4 de sus 11 goles. Llevan 11 goles en 5 partidos y 15 en contra: marcan poco y encajan bastante."
+    "Su referencia es Biel M. (11), con 4 de sus 12 goles. En 6 partidos han encajado 21, más de 3 por partido."
   ],
   plantilla: []
 };
