@@ -212,8 +212,26 @@ const COMPETICIONES = [
         { local: "Pont d'Inca B",   visitante: "Calvià",          fecha: "2026-11-21", hora: "13:00", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
         { local: "Grupo Osa B",     visitante: "Son Oliva B",     fecha: "2026-11-21", hora: "17:00", pista: "P.M. S'Arenal (sintético)", gl: null, gv: null },
         { local: "Entreculturas",   visitante: "Palmanova A",     fecha: "2026-11-21", hora: "18:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null },
-        { local: "Sant Joan A",     visitante: "Montesión",       fecha: "2026-11-22", hora: "12:00", pista: "P.M. Son Juny (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goles: [], porteros: [] },
+        { local: "Sant Joan A",     visitante: "Montesión",       fecha: "2026-11-22", hora: "12:00", pista: "P.M. Son Juny (goma)", gl: 2, gv: 13,
+          descanso: "1-6", estado: "",
+          goles: [
+            {m:"0-1",  n:"Nacho",    a:"Ángel"},
+            {m:"0-2",  n:"Bosco",    a:""},
+            {m:"0-3",  n:"Álvaro M", a:"Burgos"},
+            {m:"0-4",  n:"Tomás",    a:"Pablo"},
+            {m:"1-4",  tipo:"rival", encaja:"Santi"},
+            {m:"1-5",  n:"Burgos",   a:"Pablo"},
+            {m:"1-6",  n:"Juanito",  a:""},
+            {m:"2-6",  tipo:"rival", encaja:"Ángel"},
+            {m:"2-7",  n:"Álvaro M", a:""},
+            {m:"2-8",  n:"Tonete",   a:""},
+            {m:"2-9",  n:"Nacho",    a:"Tomás"},
+            {m:"2-10", n:"Bosco",    a:""},
+            {m:"2-11", n:"Juanito",  a:"Burgos"},
+            {m:"2-12", n:"Juanito",  a:"Ripoll"},
+            {m:"2-13", n:"Juanito",  a:"Ripoll"}
+          ],
+          porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:1}] },
         { local: "Ciutat d'Inca A", visitante: "Joves d'Inca A",  fecha: "2026-11-22", hora: "11:30", pista: "Pol. La Salle Inca (sintético)", gl: null, gv: null },
         { local: "CD Viva Sports",  visitante: "Sant Joan B",     fecha: "2026-11-21", hora: "10:30", pista: "P.M. Secar de la Real (parquet)", gl: 6, gv: 3 }
       ]},
@@ -309,23 +327,15 @@ const COMPETICIONES = [
 /* Informe del próximo rival. Con rival:"" el bloque no se muestra.
    Resultados y puesto salen solos de COMPETICIONES; goleadores y notas, de las actas de la FFIB. */
 const INFORME = {
-  rival: "Sant Joan A",
-  goleadoresTitulo: "Sus goleadores esta temporada (fase de clasificación + liga)",
-  goleadores: [
-    {d:11, n:"Biel M.",    g:4},
-    {d:3,  n:"Roc G.",     g:2},
-    {d:15, n:"Mohamed F.", g:1},
-    {d:7,  n:"Miquel A.",  g:2},
-    {d:8,  n:"Miquel B.",  g:1},
-    {d:6,  n:"Pau V.",     g:1}
-  ],
+  rival: "Sant Joan B",
+  goleadoresTitulo: "Sus goleadores esta temporada",
+  goleadores: [],
   notas: [
-    "Domingo 22 a las 12:00 en su pista, el P.M. Son Juny (goma).",
-    "Vienen de perder 6-1 en la pista del Joves d'Inca A, el mismo equipo con el que empatamos 2-2. Aguantaron el 1-1 hasta el minuto 20, con gol de Miquel A. (7), y en la segunda parte se les escapó.",
-    "En liga llevan un partido ganado (4-1 al Son Oliva B) y uno perdido. Su partido de la J1 en Palmanova se suspendió. Están 8.º con 3 puntos, uno más que nosotros.",
-    "La temporada pasada fueron quintos en esta misma liga Preferente, con 38 puntos.",
-    "En la fase de clasificación fueron cuartos del grupo A: 3 puntos y 7:14. Perdieron 1-6 con el Alcúdia A, 1-2 con el Entreculturas y 5-2 con el Son Ferrer B, y ganaron 1-3 en la pista del Ciutat d'Inca B.",
-    "Su referencia es Biel M. (11), con 4 de sus 12 goles. En 6 partidos han encajado 21, más de 3 por partido."
+    "Sábado 28 a las 11:15 en casa, en el Pab. S. Pedro Claver (goma).",
+    "Son el colista de la liga: cuatro partidos y cuatro derrotas, con 9 goles a favor y 23 en contra.",
+    "Perdieron 2-5 con el Grupo Osa B, 6-3 en la pista del Entreculturas, 1-6 con el Pont d'Inca B y 6-3 este sábado en la pista del CD Viva Sports, el equipo que nos ganó 2-4.",
+    "En la fase de clasificación fueron cuartos del grupo G: 4 puntos y 13:26.",
+    "Es el filial del Sant Joan A al que acabamos de ganar 2-13 en Son Juny."
   ],
   plantilla: []
 };
