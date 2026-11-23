@@ -404,56 +404,26 @@ document.title = `Montesión A · ${EQUIPO.categoria} · ${EQUIPO.temporada}`;
   $("#rival").hidden = false;
 })();
 
-/* ---------- Cómo va el resto de grupos ---------- */
+/* ---------- Las otras ligas ---------- */
 (function grupos(){
-  if (typeof GRUPOS === "undefined" || !GRUPOS.lista || !GRUPOS.lista.length) return;
-  /* Suben los dos primeros a División de Honor; 3.º y 4.º a Primera Regional B */
-  const destino = i => i < 2 ? ["dh","División de Honor"] : i < 4 ? ["reg","1.ª Regional B"] : null;
-
-  const nuestros3 = [];
-  GRUPOS.lista.forEach(gr => gr.equipos.forEach((e,i) => {
-    if (e.club && destino(i)) nuestros3.push({n:e.n, g:gr.g, d:destino(i)[1]});
-  }));
-
-  let html = `<div class="grupos"><h3>Cómo va el resto de grupos</h3>
-    <div class="gr-regla">
-      <p>Siete grupos de cinco equipos. Los <b>dos primeros</b> de cada grupo van a <b>División de Honor</b>; el <b>tercero y el cuarto</b>, a <b>Primera Regional (grupo B)</b>.</p>
-      <p>${esc(GRUPOS.nota)}</p>
-    </div>`;
-
-  if (nuestros3.length) {
-    const lista = xs => xs.map(x => `${esc(x.n)} (grupo ${x.g})`).join(", ").replace(/, ([^,]*)$/, " y $1");
-    const dh  = nuestros3.filter(x => x.d === "División de Honor");
-    const reg = nuestros3.filter(x => x.d !== "División de Honor");
-    const partes = [];
-    if (dh.length)  partes.push(`${lista(dh)} ${dh.length > 1 ? "entrarían" : "entraría"} en División de Honor`);
-    if (reg.length) partes.push(`${lista(reg)} ${reg.length > 1 ? "se quedarían" : "se quedaría"} en Primera Regional`);
-    html += `<p class="gr-titular">Ahora mismo ${partes.join("; ")}.</p>`;
-  }
-
-  if (GRUPOS.analisis && GRUPOS.analisis.length) {
-    html += `<div class="gr-analisis">${GRUPOS.analisis.map(a =>
-      `${a.t?`<h4>${esc(a.t)}</h4>`:""}<p>${esc(a.p)}</p>`).join("")}</div>`;
-  }
-
-  html += `<h4 class="gr-sub">Clasificación de los siete grupos</h4>`;
-  html += GRUPOS.lista.map(gr => {
-    const lider = gr.equipos[0];
-    const filas = gr.equipos.map((e,i) => {
-      const d = destino(i);
-      return `<div class="gr-fila ${e.nos?"nos":""} ${e.club?"club":""}">
+  if (typeof GRUPOS === "undefined") return;
+  const ligas = GRUPOS.ligas || [];
+  if (!ligas.length && !GRUPOS.fase) return;
+  let html = `<div class="grupos"><h3>Cómo van las otras ligas</h3>`;
+  if (ligas.length) {
+    html += ligas.map(l => {
+      const filas = (l.arriba||[]).map((e,i) => `<div class="gr-fila">
         <span class="p">${i+1}</span>
-        <span class="gr-eq">${esc(e.n)}<small>${e.pj} ${e.pj===1?"partido":"partidos"} · ${e.gf}:${e.gc}</small>
-          ${d?`<span class="gr-dest ${d[0]}">${d[1]}</span>`:""}</span>
-        <span class="pts">${e.pts}</span></div>`;
+        <span class="gr-eq">${esc(e.n)}<small>${e.pj} ${e.pj===1?"partido":"partidos"}</small></span>
+        <span class="pts">${e.pts}</span></div>`).join("");
+      return `<details class="grupo" open>
+        <summary><span class="gr-n">${esc(l.nombre)}</span>
+          ${l.tras?`<span class="gr-lider">${esc(l.tras)}</span>`:""}
+          <span class="flecha" aria-hidden="true">⌄</span></summary>
+        <div class="gr-cuerpo">${l.nota?`<p class="gr-nota">${esc(l.nota)}</p>`:""}${filas}</div></details>`;
     }).join("");
-    return `<details class="grupo ${gr.nuestro?"mio":""}" open>
-      <summary><span class="gr-n">${esc(gr.g)}</span>
-        <span class="gr-lider">Líder: <b>${esc(lider.n)}</b> · ${lider.pts} pts</span>
-        <span class="flecha" aria-hidden="true">⌄</span></summary>
-      <div class="gr-cuerpo"><p class="gr-nota">${esc(gr.nota)}</p>${filas}</div></details>`;
-  }).join("");
-
+  }
+  if (GRUPOS.fase) html += `<div class="gr-regla"><p>${esc(GRUPOS.fase)}</p></div>`;
   html += `</div>`;
   $("#grupos").innerHTML = html;
   $("#grupos").hidden = false;
