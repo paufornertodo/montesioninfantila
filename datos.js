@@ -330,20 +330,24 @@ const INFORME = {
   rival: "Sant Joan B",
   goleadoresTitulo: "Sus goleadores esta temporada",
   goleadores: [
-    {d:"", n:"Toni C.",    g:3},
-    {d:"", n:"Cadmiel L.", g:2},
-    {d:"", n:"Guillem B.", g:2},
-    {d:"", n:"Roc F.",     g:1},
-    {d:"", n:"Marc N.",    g:1}
+    {d:9,  n:"Toni C.",    g:3},
+    {d:5,  n:"Cadmiel L.", g:2},
+    {d:11, n:"Guillem B.", g:2},
+    {d:3,  n:"Roc F.",     g:1},
+    {d:8,  n:"Marc N.",    g:1}
   ],
   notas: [
     "Sábado 28 a las 11:15 en casa, en el Pab. S. Pedro Claver (goma).",
     "Son el colista de la liga: cuatro partidos y cuatro derrotas, con 9 goles a favor y 23 en contra.",
     "Perdieron 2-5 con el Grupo Osa B, 6-3 en la pista del Entreculturas, 1-6 con el Pont d'Inca B y 6-3 este sábado en la pista del CD Viva Sports, el equipo que nos ganó 2-4.",
     "En la fase de clasificación fueron cuartos del grupo G: 4 puntos y 13:26.",
-    "Es el filial del Sant Joan A al que acabamos de ganar 2-13 en Son Juny."
+    "Es el filial del Sant Joan A al que acabamos de ganar 2-13 en Son Juny.",
+    "Su máximo goleador es Toni C. (9), con 3 de sus 9 goles; marcó los dos contra el Viva Sports."
   ],
-  plantilla: []
+  plantilla: [
+    {d:1, n:"Joan Miquel M."}, {d:3, n:"Roc F."}, {d:6, n:"Nil P."}, {d:7, n:"Àngel P."}, {d:10, n:"Jordi G."},
+    {d:8, n:"Marc N."}, {d:9, n:"Toni C."}, {d:11, n:"Guillem B."}, {d:12, n:"Adam F."}, {d:14, n:"Jaume M."}
+  ]
 };
 
 /* Galería */
