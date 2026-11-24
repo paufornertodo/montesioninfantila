@@ -103,6 +103,7 @@ td.pts{font-family:var(--display);font-weight:800;font-size:1.2rem}
 .jornada>summary:hover .j-tit{color:var(--azul)}
 .j-tit{flex:1;font-weight:600;font-size:1rem;line-height:1.25}
 .j-tit span{display:block;font-weight:400;color:var(--gris);font-size:.86rem}
+.j-tit .j-goles{color:var(--texto,#333);font-size:.82rem;margin-top:2px}
 .res-j{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1.2;padding:2px 10px;border-radius:6px;background:var(--azul-claro);color:var(--tinta);white-space:nowrap}
 .res-j.g{background:var(--azul);color:#fff}
 .res-j.p{background:var(--rojo);color:#fff}
@@ -488,6 +489,22 @@ function cruce(p){
   return `<div class="${cls}"><div class="l">${esc(p.local)}</div>${r}<div>${esc(p.visitante)}</div>${det}</div>`;
 }
 
+/* Resumen que se ve con la jornada plegada: nuestro partido y quién marcó */
+function resumenJornada(j, p, fechas){
+  if (!p) return `<span>${fechas}${j.descansa && j.descansa !== EQUIPO.id?` · Descansa ${esc(j.descansa)}`:""}</span>`;
+  const casa = p.local === EQUIPO.id;
+  const cuando = p.fecha ? fechaCorta(p.fecha) : "";
+  if (jugado(p)) {
+    let html = `<span>${esc(p.local)} ${p.gl}–${p.gv} ${esc(p.visitante)}${cuando?` · ${cuando}`:""}</span>`;
+    const t = {};
+    golesDe(p).forEach(x => { const k = nom(x.n); t[k] = (t[k]||0) + x.g; });
+    const gs = Object.entries(t).map(([n,g])=>({n,g})).sort((a,b)=>b.g-a.g);
+    if (gs.length) html += `<span class="j-goles">⚽ ${gs.map(x=>`${esc(nom(x.n))}${x.g>1?` ${x.g}`:""}`).join(", ")}</span>`;
+    return html;
+  }
+  return `<span>${esc(p.local)} – ${esc(p.visitante)}${cuando?` · ${cuando}`:""} · ${casa?"en casa":"fuera"}</span>`;
+}
+
 (function competiciones(){
   const html = COMPETICIONES.map((c, i) => {
     const hay = c.jornadas.length > 0;
@@ -517,7 +534,7 @@ function cruce(p){
         chip = `<span class="res-j desc">Descansamos</span>`;
       }
       return `<details class="jornada" ${n===enCurso?"open":""}>
-        <summary><div class="j-tit">Jornada ${j.j}<span>${fechas}${j.descansa && j.descansa !== EQUIPO.id?` · Descansa ${esc(j.descansa)}`:""}</span></div>${chip}<span class="flecha" aria-hidden="true">⌄</span></summary>
+        <summary><div class="j-tit">Jornada ${j.j}${resumenJornada(j, nuestro, fechas)}</div>${chip}<span class="flecha" aria-hidden="true">⌄</span></summary>
         <div class="j-cuerpo">${j.partidos.map(cruce).join("")}</div></details>`;
     }).join("");
     if (c.ffib) cuerpo += `<div class="ffib"><a class="btn" href="${esc(c.ffib)}" target="_blank" rel="noopener">Resultados y clasificación oficiales en la FFIB</a></div>`;
