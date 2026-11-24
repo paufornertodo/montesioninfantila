@@ -209,9 +209,9 @@ const COMPETICIONES = [
         { local: "Sant Joan B",     visitante: "Pont d'Inca B",   fecha: "2026-11-15", hora: "11:45", pista: "P.M. Son Juny (goma)", gl: 1, gv: 6 }
       ]},
       { j: 4, partidos: [
-        { local: "Pont d'Inca B",   visitante: "Calvià",          fecha: "2026-11-21", hora: "13:00", pista: "P.M. La Salle Pont d'Inca (goma)", gl: null, gv: null },
-        { local: "Grupo Osa B",     visitante: "Son Oliva B",     fecha: "2026-11-21", hora: "17:00", pista: "P.M. S'Arenal (sintético)", gl: null, gv: null },
-        { local: "Entreculturas",   visitante: "Palmanova A",     fecha: "2026-11-21", hora: "18:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null },
+        { local: "Pont d'Inca B",   visitante: "Calvià",          fecha: "2026-11-21", hora: "13:00", pista: "P.M. La Salle Pont d'Inca (goma)", gl: 3, gv: 1 },
+        { local: "Grupo Osa B",     visitante: "Son Oliva B",     fecha: "2026-11-21", hora: "17:00", pista: "P.M. S'Arenal (sintético)", gl: 2, gv: 4 },
+        { local: "Entreculturas",   visitante: "Palmanova A",     fecha: "2026-11-21", hora: "18:00", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: 6, gv: 5 },
         { local: "Sant Joan A",     visitante: "Montesión",       fecha: "2026-11-22", hora: "12:00", pista: "P.M. Son Juny (goma)", gl: 2, gv: 13,
           descanso: "1-6", estado: "",
           goles: [
@@ -232,7 +232,7 @@ const COMPETICIONES = [
             {m:"2-13", n:"Juanito",  a:"Ripoll"}
           ],
           porteros: [{n:"Santi", ge:1}, {n:"Ángel", ge:1}] },
-        { local: "Ciutat d'Inca A", visitante: "Joves d'Inca A",  fecha: "2026-11-22", hora: "11:30", pista: "Pol. La Salle Inca (sintético)", gl: null, gv: null },
+        { local: "Ciutat d'Inca A", visitante: "Joves d'Inca A",  fecha: "2026-11-22", hora: "11:30", pista: "Pol. La Salle Inca (sintético)", gl: 3, gv: 1 },
         { local: "CD Viva Sports",  visitante: "Sant Joan B",     fecha: "2026-11-21", hora: "10:30", pista: "P.M. Secar de la Real (parquet)", gl: 6, gv: 3 }
       ]},
       { j: 5, partidos: [
@@ -329,7 +329,13 @@ const COMPETICIONES = [
 const INFORME = {
   rival: "Sant Joan B",
   goleadoresTitulo: "Sus goleadores esta temporada",
-  goleadores: [],
+  goleadores: [
+    {d:"", n:"Toni C.",    g:3},
+    {d:"", n:"Cadmiel L.", g:2},
+    {d:"", n:"Guillem B.", g:2},
+    {d:"", n:"Roc F.",     g:1},
+    {d:"", n:"Marc N.",    g:1}
+  ],
   notas: [
     "Sábado 28 a las 11:15 en casa, en el Pab. S. Pedro Claver (goma).",
     "Son el colista de la liga: cuatro partidos y cuatro derrotas, con 9 goles a favor y 23 en contra.",
@@ -359,6 +365,23 @@ const FOTOS = [
    n, pts, pj) y nota (una o dos frases). Datos oficiales de la FFIB.
    ---------------------------------------------------------- */
 const GRUPOS = {
-  ligas: [],
+  ligas: [
+    { nombre: "División de Honor", tras: "Tras la jornada 4",
+      nota: "Bar Gost A y Son Oliva A, el que ganó nuestro grupo de la fase de clasificación, van con pleno. El Alcúdia A, con un partido menos, solo ha encajado un gol.",
+      arriba: [
+        {n:"Bar Gost · Sagrat Cor A", pts:12, pj:4},
+        {n:"Son Oliva A",             pts:12, pj:4},
+        {n:"Alcúdia A",               pts:9,  pj:3},
+        {n:"Manacor Fisiomedia A",    pts:9,  pj:4}
+      ]},
+    { nombre: "Primera Regional", tras: "Tras la jornada 4",
+      nota: "Cuatro empatados a 9 puntos, y dos son rivales de nuestro grupo de la fase de clasificación: el Viva Sports Masunga, que no ha perdido, y el Inter Campos. El Montesión B va 8.º con 3 puntos.",
+      arriba: [
+        {n:"Viva Sports Masunga",     pts:9, pj:3},
+        {n:"Manacor Fisiomedia B",    pts:9, pj:4},
+        {n:"Joves d'Inca B",          pts:9, pj:3},
+        {n:"Inter Campos",            pts:9, pj:4}
+      ]}
+  ],
   fase: "La fase de clasificación se cerró el 24 de octubre. Acabamos terceros del grupo D con 7 puntos y 34:12, a uno de la segunda plaza, y fuimos el equipo más goleador del grupo. Desde el 31 de octubre ya se juega la liga."
 };
