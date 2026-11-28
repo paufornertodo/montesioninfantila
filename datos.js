@@ -237,8 +237,18 @@ const COMPETICIONES = [
       ]},
       { j: 5, partidos: [
         { local: "Palmanova A",     visitante: "Pont d'Inca B",   fecha: "2026-11-27", hora: "20:45", pista: "Palmanova (pista exterior)", gl: null, gv: null },
-        { local: "Montesión",       visitante: "Sant Joan B",     fecha: "2026-11-28", hora: "11:15", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: null, gv: null,
-          descanso: "", estado: "", goles: [], porteros: [] },
+        { local: "Montesión",       visitante: "Sant Joan B",     fecha: "2026-11-28", hora: "11:15", pista: "Pab. S. Pedro Claver (Montesión) (goma)", gl: 5, gv: 2,
+          descanso: "", estado: "",
+          goles: [
+            {m:"1-0", n:"Burgos", a:"Pablo"},
+            {m:"2-0", n:"Tomás",  a:"Jaime"},
+            {m:"2-1", tipo:"rival", encaja:"Ángel"},
+            {m:"2-2", tipo:"rival", encaja:"Ángel"},
+            {m:"3-2", n:"Juanito", a:"", nota:"de rechace"},
+            {m:"4-2", n:"Juanito", a:"Jaime"},
+            {m:"5-2", n:"Bosco",   a:"Santi"}
+          ],
+          porteros: [{n:"Ángel", ge:2}, {n:"Santi", ge:0}] },
         { local: "Son Oliva B",     visitante: "Entreculturas",   fecha: "2026-11-28", hora: "18:00", pista: "Pab. Son Ferragut (goma)", gl: null, gv: null },
         { local: "Joves d'Inca A",  visitante: "Grupo Osa B",     fecha: "2026-11-28", hora: "18:15", pista: "Pab. Mun. Sa Creu (sintético)", gl: null, gv: null },
         { local: "Sant Joan A",     visitante: "Ciutat d'Inca A", fecha: "2026-11-29", hora: "12:00", pista: "P.M. Son Juny (goma)", gl: null, gv: null },
@@ -327,28 +337,21 @@ const COMPETICIONES = [
 /* Informe del próximo rival. Con rival:"" el bloque no se muestra.
    Resultados y puesto salen solos de COMPETICIONES; goleadores y notas, de las actas de la FFIB. */
 const INFORME = {
-  rival: "Sant Joan B",
-  goleadoresTitulo: "Sus goleadores esta temporada",
+  rival: "Ciutat d'Inca A",
+  goleadoresTitulo: "Su máximo goleador",
   goleadores: [
-    {d:9,  n:"Toni C.",    g:3},
-    {d:5,  n:"Cadmiel L.", g:2},
-    {d:11, n:"Guillem B.", g:2},
-    {d:3,  n:"Roc F.",     g:1},
-    {d:8,  n:"Marc N.",    g:1}
+    {d:"", n:"Raúl R.", g:8}
   ],
   notas: [
-    "Sábado 28 a las 11:15 en casa, en el Pab. S. Pedro Claver (goma).",
-    "Son el colista de la liga: cuatro partidos y cuatro derrotas, con 9 goles a favor y 23 en contra.",
-    "Perdieron 2-5 con el Grupo Osa B, 6-3 en la pista del Entreculturas, 1-6 con el Pont d'Inca B y 6-3 este sábado en la pista del CD Viva Sports, el equipo que nos ganó 2-4.",
-    "En la fase de clasificación fueron cuartos del grupo G: 4 puntos y 13:26.",
-    "Es el filial del Sant Joan A al que acabamos de ganar 2-13 en Son Juny.",
-    "Su máximo goleador es Toni C. (9), con 3 de sus 9 goles; marcó los dos contra el Viva Sports."
+    "Domingo 6 de diciembre en su pista; la FFIB aún no ha fijado la hora.",
+    "Es uno de los dos líderes: ganó sus cuatro primeros partidos, con 21 goles a favor y 8 en contra.",
+    "Ganó 4-11 en Calvià, 3-0 al Palmanova A, 3-4 en la pista del Son Oliva B y 3-1 al Joves d'Inca A, el equipo con el que empatamos 2-2.",
+    "Raúl R. es el máximo goleador de la liga, con 8 goles en esos cuatro partidos.",
+    "En la fase de clasificación jugó en el grupo G con el Pont d'Inca A, el Alcúdia B y el Sant Joan B."
   ],
-  plantilla: [
-    {d:1, n:"Joan Miquel M."}, {d:3, n:"Roc F."}, {d:6, n:"Nil P."}, {d:7, n:"Àngel P."}, {d:10, n:"Jordi G."},
-    {d:8, n:"Marc N."}, {d:9, n:"Toni C."}, {d:11, n:"Guillem B."}, {d:12, n:"Adam F."}, {d:14, n:"Jaume M."}
-  ]
+  plantilla: []
 };
+
 
 /* Galería */
 const FOTOS = [
